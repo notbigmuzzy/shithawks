@@ -1,0 +1,25 @@
+menu-wrapper {
+
+	#menu {
+		display: flex;
+		justify-content: space-around;
+		background-color: black;
+
+
+			a {
+				display: block;
+				font-size: 40px;
+				line-height: 1;
+				font-weight: bold;
+				text-transform: uppercase;
+				outline: none;
+				color: gray;
+
+				&:first-letter {
+					color: brown;
+				}
+			}
+		
+	}
+
+}

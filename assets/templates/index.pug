@@ -1,0 +1,16 @@
+doctype html
+html(lang='en')
+    head
+        //HEAD STUFF
+        include base/head.pug
+    body#body
+        //BODY
+        include page/menu.pug
+        pages-wrapper
+            include page/game.pug
+            include page/map.pug
+            include page/list.pug
+            include page/errands.pug
+            include page/help.pug
+        // SCRIPTS
+        include base/scripts.pug
