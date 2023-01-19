@@ -5,16 +5,12 @@
 html,
 body {
     height: 100%;
-    background-color: black;
+    background-color: $black;
     font-family: "Open Sans", sans-serif;
 }
 
 a {
 	text-decoration: none;
-}
-
-div {
-    color: green;
 }
 
 @mixin hide-scrollbars() {

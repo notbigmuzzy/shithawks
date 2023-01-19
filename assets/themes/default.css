@@ -1,0 +1,24 @@
+:root {
+
+    /*INTERFACE*/
+    --black: #000;
+    --white: #fff;
+    --lightgray: #a8a8a8;
+    --darkgray: #808080;
+    --blue: #0000a8;
+    --cyan: #00a8a8;
+    --green: #01a900;
+    --red: #9c1112;
+
+    /*MAPS*/
+    --sea: #50469b;
+    --coast: #6155bc;
+    --sand: #ff9800;
+    --grass: #68a940;
+    --forest: #008000;
+    --mountain: #00ffff;
+    --bridge: #888;
+    --highway: #999;
+    --dirtroad: #b46b00;
+    --city: #9c27b0;
+}

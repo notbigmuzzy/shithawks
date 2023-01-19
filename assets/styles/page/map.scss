@@ -1,5 +1,71 @@
 map-page {
+	display: flex;
+	
 	sidebar-wrapper {
-		background-color: darkblue;
+		flex-basis: 25%;
+	}
+
+	map-wrapper {
+		flex-basis: 75%;
+
+		.map-float {
+			max-width: calc(100% - 30px);
+			height: calc(100% - 50px);
+		}
+	}
+}
+
+the-map {
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
+	height: 100%;
+	background-color: $black;
+
+	.field {
+		flex-basis: 6.25%;
+		outline:1px dotted rgba(black,0.05);
+
+		&:hover {
+			cursor: pointer;
+			opacity: 0.75;
+			outline: 3px dashed rgba(white,0.5);
+		}
+
+		&.sea {
+			background-color: $sea;
+		}
+
+		&.coast {
+			background-color: $coast;
+		}
+
+		&.land {
+			background-color: $grass;
+		}
+
+		&.sand {
+			background-color: $sand;
+		}
+
+		&.highway {
+			background-color: $highway;
+		}
+
+		&.bridge {
+			background-color: $bridge;
+		}
+
+		&.city {
+			background-color: $city;
+		}
+
+		&.forest {
+			background-color: $forest;
+		}
+
+		&.mountain {
+			background-color: $mountain;
+		}
 	}
 }

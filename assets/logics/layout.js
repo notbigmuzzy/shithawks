@@ -1,5 +1,7 @@
 export const layout = () => {
+	urlEventListeners();
 	window.onhashchange = urlEventListeners;
+
 	function urlEventListeners() {
 		let e = location.hash,
 			currentTab = document.querySelector('[href="' + e + '"]'),
@@ -27,8 +29,4 @@ export const layout = () => {
 		})
 		currentPage.classList.add('active-page');
 	}
-	urlEventListeners();
-
-
-
 }

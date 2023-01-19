@@ -1,10 +1,8 @@
 menu-wrapper {
-
 	#menu {
 		display: flex;
 		justify-content: space-around;
-		background-color: black;
-
+		background-color: $black;
 
 			a {
 				display: block;
@@ -13,10 +11,11 @@ menu-wrapper {
 				font-weight: bold;
 				text-transform: uppercase;
 				outline: none;
-				color: gray;
+				padding: 0 10px;
+				color: $gray;
 
 				&:first-letter {
-					color: brown;
+					color: $white;
 				}
 			}
 		

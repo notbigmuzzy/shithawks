@@ -1,0 +1,127 @@
+#menu {
+	a[href="#game"] {
+		&:first-letter {
+			color: $blue;
+		}
+		&.active-tab {
+			background-color: $blue;
+			color: $white;
+			&:first-letter {
+				background-color: $white;
+			}
+		}
+	}
+	a[href="#map"] {
+		&:first-letter {
+			color: $red;
+		}
+		&.active-tab {
+			background-color: $red;
+			color: $white;
+			&:first-letter {
+				background-color: $white;
+			}
+		}
+	}
+	a[href="#list"] {
+		&:first-letter {
+			color: $cyan;
+		}
+		&.active-tab {
+			background-color: $cyan;
+			color: $white;
+			&:first-letter {
+				background-color: $white;
+			}
+		}
+	}
+	a[href="#errands"] {
+		&:first-letter {
+			color: $green;
+		}
+		&.active-tab {
+			background-color: $green;
+			color: $white;
+			&:first-letter {
+				background-color: $white;
+			}
+		}
+	}
+	a[href="#help"] {
+		&:first-letter {
+			color: $darkgray;
+		}
+		&.active-tab {
+			background-color: $darkgray;
+			color: $white;
+			&:first-letter {
+				background-color: $white;
+			}
+		}
+	}
+}
+
+pages-wrapper {
+	#game {
+		&.active-page {
+			background-color: $blue;
+		}
+	}
+	#map {
+		&.active-page {
+			background-color: $red;
+		}
+	}
+	#list {
+		&.active-page {
+			background-color: $cyan;
+		}
+	}
+	#errands {
+		&.active-page {
+			background-color: $green;
+		}
+	}
+	#help {
+		&.active-page {
+			background-color: $darkgray;
+		}
+	}
+}
+
+modal-float {
+	position: relative;
+	display: block;
+	margin: 20px 10px 30px;
+	min-height: 50px;
+	max-width: 300px;
+	padding: 5px;
+
+	&:before {
+		content: "";
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		background-color: $gray;
+		z-index: 2;
+	}
+
+	&:after {
+		content: "";
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 15px;
+		left: 10px;
+		background-color: $black;
+		opacity: 0.75;
+		z-index: 1;
+	}
+
+	& > * {
+		position: relative;
+		z-index: 3;
+	}
+}

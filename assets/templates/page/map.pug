@@ -1,11 +1,28 @@
 <map-page id="map">
-    <sidebar-wrapper>
-        <div>S I D E B A R</div>
-    </sidebar-wrapper>
-    <map-wrapper>
-        <div>M A P </div>
-        <div>M A P </div>
-        <div>M A P </div>
-    </menu-wrapper>
+    <center-wrapper>
+        <sidebar-wrapper>
+            <modal-float>
+                <div>S I D E B A R</div>
+            </modal-float>
+            <modal-float>
+                <p>some other stuff here</p>
+                <hr>
+                <p>add info</p>
+                <p>add info</p>
+                <p>add info</p>
+            </modal-float>
+            <modal-float>
+                <div>S I D E B A R</div>
+            </modal-float>
+
+        </sidebar-wrapper>
+        <map-wrapper>
+                <modal-float class="map-float">
+                    <the-map>
+                        include ../maps/island-map.pug
+                    </the-map>
+                </modal-float>
+        </menu-wrapper>
+    </center-wrapper>
 </map-page>
 
