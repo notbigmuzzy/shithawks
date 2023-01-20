@@ -11,14 +11,20 @@
     --red: #9c1112;
 
     /*MAPS*/
-    --sea: #50469b;
-    --coast: #6155bc;
+    --sea: #095090;
+    --coast: #0a589f;
     --sand: #ff9800;
     --grass: #68a940;
-    --forest: #008000;
-    --mountain: #00ffff;
-    --bridge: #888;
+    --forest: #68a940;
+    --mountain: #68a940;
+    --bridge: #0a589f;
     --highway: #999;
-    --dirtroad: #b46b00;
+    --dirtroad: #759540;
     --city: #9c27b0;
+
+    /*CITY*/
+    --alpine: #e1e1e1;
+    --desert: #c67702;
+    --coastal: #074177;
+    --grasland: #518432;
 }

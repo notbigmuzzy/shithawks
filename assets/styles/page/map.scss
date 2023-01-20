@@ -23,21 +23,42 @@ the-map {
 	background-color: $black;
 
 	.field {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		position: relative;
 		flex-basis: 6.25%;
 		outline:1px dotted rgba(black,0.05);
 
+		.sprite {
+			position: absolute;
+			max-width: 100%;
+			max-height: 100%;
+			pointer-events: none;
+		}
+
 		&:hover {
 			cursor: pointer;
-			opacity: 0.75;
-			outline: 3px dashed rgba(white,0.5);
+			filter: drop-shadow(2px 4px 6px black) brightness(1.25);
+			outline: 4px dashed rgba(white,.5);
+			z-index: 5;
+			scale: 1.25;
 		}
 
 		&.sea {
 			background-color: $sea;
+
+			.sprite {
+				opacity: 0.5;
+			}
 		}
 
 		&.coast {
 			background-color: $coast;
+
+			.sprite {
+				opacity: 0.5;
+			}
 		}
 
 		&.land {
@@ -50,14 +71,51 @@ the-map {
 
 		&.highway {
 			background-color: $highway;
+
+			&:after {
+				content: "-";
+				font-weight: bold;
+				font-size: 10px;
+				position: absolute;
+				color: $black;
+				opacity: 0.5;
+				pointer-events: none;
+			}
 		}
 
 		&.bridge {
 			background-color: $bridge;
+
+			.sprite {
+				scale: 1.15;
+				filter: brightness(1.15);
+			}
+
+			&.horizontal {
+				.sprite {
+					transform: rotate(90deg);
+				}
+			}
 		}
 
 		&.city {
 			background-color: $city;
+
+			&.coastal {
+				background-color: $coastal;
+			}
+
+			&.desert {
+				background-color: $desert;
+			}
+
+			&.alpine {
+				background-color: $alpine;
+			}
+
+			&.grass {
+				background-color: $grasland;
+			}
 		}
 
 		&.forest {
@@ -66,6 +124,16 @@ the-map {
 
 		&.mountain {
 			background-color: $mountain;
+		}
+
+		&.dirtroad {
+			background-color: $dirtroad;
+
+			&.horizontal {
+				.sprite {
+					transform: rotate(90deg);
+				}
+			}
 		}
 	}
 }
