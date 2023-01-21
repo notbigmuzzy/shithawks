@@ -1,3 +1,7 @@
-import { layout } from './assets/logics/layout.js';
+/*IMPORT FUNCTIONS*/
+import { tabChangeOnHashChange } from './assets/logics/tabChangeOnHashChange.js';
+import { characterMovement } from './assets/logics/characterMovement.js';
 
-layout();
+/*EXECUTE FUNCTIONS*/
+tabChangeOnHashChange();
+characterMovement();

@@ -1,4 +1,4 @@
-export const layout = () => {
+export const tabChangeOnHashChange = () => {
 	urlEventListeners();
 	window.onhashchange = urlEventListeners;
 
