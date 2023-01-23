@@ -1,24 +1,51 @@
 menu-wrapper {
+	display: flex;
+
 	#menu {
 		display: flex;
 		justify-content: space-around;
 		background-color: $black;
+		flex-grow: 9;
 
-			a {
-				display: block;
-				font-size: 40px;
-				line-height: 1;
-				font-weight: bold;
-				text-transform: uppercase;
-				outline: none;
-				padding: 0 10px;
-				color: $gray;
+		a,
+		span {
+			display: block;
+			font-size: 40px;
+			line-height: 1;
+			font-weight: bold;
+			text-transform: uppercase;
+			outline: none;
+			padding: 0 10px;
+			color: $gray;
 
-				&:first-letter {
-					color: $white;
-				}
+			&:first-letter {
+				color: $white;
 			}
-		
+		}
+	}
+
+	.next-day-button {
+		color: $gray;
+		border-left: 5px solid var(--darkgray);
+
+		span {
+			display: block;
+			cursor: pointer;
+			padding: 0 10px;
+			font-size: 40px;
+			line-height: 1;
+			font-weight: bold;
+			text-transform: uppercase;
+			outline: none;
+			padding: 0 10px;
+			color: $gray;
+			wrap-text-
+
+			&:hover {
+				background-color: yellow;
+				color: red;
+			}
+		}
 	}
 
 }

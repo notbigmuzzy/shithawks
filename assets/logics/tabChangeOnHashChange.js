@@ -1,15 +1,22 @@
 export const tabChangeOnHashChange = () => {
-	urlEventListeners();
-	window.onhashchange = urlEventListeners;
+	hashChangeTabsChange();
+	window.onhashchange = hashChangeTabsChange;
 
-	function urlEventListeners() {
-		let e = location.hash,
-			currentTab = document.querySelector('[href="' + e + '"]'),
-			currentPage = document.getElementById(e.substring(1));
+	function hashChangeTabsChange() {
+		//GET LOCATION HASH
+		var e = location.hash;
+		if (e.length == 0) {
+			e = "#map";
+			window.location.hash = "#map";
+		}
 
-		let getSiblings = function (elem) {
-			let siblings = [];
-			let sibling = elem.parentNode.firstChild;
+		//GET SIBLINGS
+		var currentTab = document.querySelector('[href="' + e + '"]'),
+			currentPage = document.getElementById(e.substring(1)),
+			getSiblings = function (elem) {
+			var siblings = [],
+				sibling = elem.parentNode.firstChild;
+
 			while (sibling) {
 				if (sibling.nodeType === 1 && sibling !== elem) {
 					siblings.push(sibling);
@@ -18,12 +25,16 @@ export const tabChangeOnHashChange = () => {
 			}
 			return siblings;
 		};
-		let otherTabs = getSiblings(currentTab);
+
+		//TABS
+		var otherTabs = getSiblings(currentTab);
 		otherTabs.forEach(function(otherTab) {
 			otherTab.classList.remove('active-tab');
 		})
 		currentTab.classList.add('active-tab');
-		let otherPages = getSiblings(currentPage);
+
+		//PAGES
+		var otherPages = getSiblings(currentPage);
 		otherPages.forEach(function(otherPage) {
 			otherPage.classList.remove('active-page');
 		})
