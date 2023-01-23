@@ -1,16 +1,4 @@
 #menu {
-	a[href="#game"] {
-		&:first-letter {
-			color: $blue;
-		}
-		&.active-tab {
-			background-color: $blue;
-			color: $white;
-			&:first-letter {
-				background-color: $white;
-			}
-		}
-	}
 	a[href="#map"] {
 		&:first-letter {
 			color: $red;
@@ -23,12 +11,12 @@
 			}
 		}
 	}
-	a[href="#list"] {
+	a[href="#details"] {
 		&:first-letter {
-			color: $cyan;
+			color: $blue;
 		}
 		&.active-tab {
-			background-color: $cyan;
+			background-color: $blue;
 			color: $white;
 			&:first-letter {
 				background-color: $white;
@@ -62,19 +50,14 @@
 }
 
 pages-wrapper {
-	#game {
-		&.active-page {
-			background-color: $blue;
-		}
-	}
 	#map {
 		&.active-page {
 			background-color: $red;
 		}
 	}
-	#list {
+	#details {
 		&.active-page {
-			background-color: $cyan;
+			background-color: $blue;
 		}
 	}
 	#errands {
