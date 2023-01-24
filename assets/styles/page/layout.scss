@@ -41,6 +41,13 @@ half-wrapper {
 	@include hide-scrollbars;
 }
 
+full-wrapper {
+	flex-basis: 100%;
+	overflow-y: auto;
+	height: 100%;
+	@include hide-scrollbars;
+}
+
 map-page,
 details-page,
 business-page,

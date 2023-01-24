@@ -46,11 +46,6 @@ the-map,
 
 		&.can-have-player {
 			opacity: 0.75;
-
-			&:hover {
-				cursor: pointer;
-				opacity: 0.6;
-			}
 		}
 
 		&.action,

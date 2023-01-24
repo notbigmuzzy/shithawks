@@ -32,28 +32,35 @@ menu-wrapper {
 	}
 
 	.next-day-button {
+		border: none;
 		color: $gray;
-		border-left: 3px solid var(--darkgray);
+		display: block;
+		padding: 0 10px;
+		font-size: 40px;
+		line-height: 1;
+		font-weight: bold;
+		text-transform: uppercase;
+		outline: none;
+		padding: 0 10px;
+		color: $gray;
+		text-align: center;
+		font-family: Open Sans, sans-serif;
+		background-color: transparent;
 
-		span {
-			display: block;
-			cursor: pointer;
-			padding: 0 10px;
-			font-size: 20px;
-			line-height: 1;
-			font-weight: bold;
-			text-transform: uppercase;
-			outline: none;
-			padding: 0 10px;
-			color: $gray;
-			text-align: center;
+		&:disabled {
+			pointer-events: none;
+		}
+
+		&:first-letter {
+			color: $yellow;
 		}
 
 		&:hover {
-			border-color: red;
-			span {
-				background-color: yellow;
-				color: red;
+			background-color: $yellow;
+			color: $red;
+
+			&:first-letter {
+				background-color: $red;
 			}
 		}
 	}

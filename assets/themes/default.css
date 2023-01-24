@@ -3,11 +3,12 @@
     --black: #000;
     --white: #fff;
     --lightgray: #a8a8a8;
-    --darkgray: #808080;
-    --blue: #0000a8;
+    --darkgray: #666;
+    --blue: #283593;
     --cyan: #00a8a8;
-    --green: #01a900;
+    --green: #2e7d32;
     --red: #9c1112;
+    --yellow: #ff0;
 
     /*MAPS*/
     --sea: #095090;

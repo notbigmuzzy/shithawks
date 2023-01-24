@@ -1,4 +1,4 @@
-export const tabChangeOnHashChange = () => {
+export const tabChange = () => {
 	hashChangeTabsChange();
 	window.onhashchange = hashChangeTabsChange;
 

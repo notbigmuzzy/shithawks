@@ -133,6 +133,15 @@ modal-float {
 		}
 	}
 
+	&.junfo-log {
+		modal-body {
+			max-height: 300px;
+			overflow: auto;
+			display: block;
+			@include hide-scrollbars;
+		}
+	}
+
 	&:before {
 		content: "";
 		position: absolute;

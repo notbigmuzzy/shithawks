@@ -1,6 +1,9 @@
-import { moveCharacterOnKeyboardInput } from './characterMovement.js';
+import { moveCharacterOnKeyboardInput } from './movement/characterMovement.js';
+import { nextDayUpdate } from './update/nextDayUpdate.js';
 
 export const keyboardControls = () => {
+	moveCharacterOnKeyboardInput($('.has-character'));
+
 	//MOVE ON KEYBOARD
 	onkeyup = (keyboard) => {
 		if (keyboard.key == "ArrowRight") {
@@ -31,6 +34,9 @@ export const keyboardControls = () => {
 		} else if (keyboard.key == "h") {
 			keyboard.preventDefault();
 			window.location.hash = "#help";
+		}  else if (keyboard.key == "Enter") {
+			keyboard.preventDefault();
+			nextDayUpdate();
 		}
 	};
 }

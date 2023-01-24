@@ -1,88 +1,11 @@
-import { updateDetailsPage } from './update-stats/detailsPage.js';
-
-export const characterMovement = () => {
-	//MARK FIELD FOR MOVEMENT
-	markFieldsForMovement();
-	updateDetailsPage();
-
-	//MOVE ON CLICK
-	$(document).on('click','.field', function() {
-		var clickedField = $(this),
-			characterInCar = $('.has-character').hasClass('has-car'),
-			characterInBoat = $('.has-character').hasClass('has-boat'),
-			canHavePlayer = clickedField.hasClass('can-have-player'),
-			forbidenFieldForPlayer = clickedField.hasClass('mountain') || 
-									 clickedField.hasClass('highway') && !clickedField.hasClass('has-car') ||
-									 clickedField.hasClass('coast') && !clickedField.hasClass('has-boat') ||
-									 clickedField.hasClass('sea');
-
-		if (characterInCar) {
-			forbidenFieldForPlayer = clickedField.hasClass('mountain') ||
-									 clickedField.hasClass('coast') && !clickedField.hasClass('has-boat') ||
-									 clickedField.hasClass('sea');
-			if (canHavePlayer && !forbidenFieldForPlayer) {
-				var character = $('player-character'),
-					characterIsOnRoad = clickedField.hasClass('highway') || clickedField.hasClass('bridge'),
-					characterCar = $('in-car'),
-					currentFieldWithPlayer = $('.has-character');
-
-				if (characterIsOnRoad) {
-					currentFieldWithPlayer.removeClass('has-character has-car');
-					clickedField.addClass('has-character has-car');
-					character.appendTo(clickedField);
-					characterCar.appendTo(clickedField);
-					markFieldsForMovement();
-				} else {
-					currentFieldWithPlayer.removeClass('has-character');
-					clickedField.addClass('has-character');
-					character.appendTo(clickedField);
-					markFieldsForMovement();
-				}
-			}
-		} else if (characterInBoat) {
-			forbidenFieldForPlayer = clickedField.hasClass('mountain') ||
-									 clickedField.hasClass('sea');
-			if (canHavePlayer && !forbidenFieldForPlayer) {
-				var character = $('player-character'),
-					characterIsSailing = clickedField.hasClass('coast') || clickedField.hasClass('bridge'),
-					characterBoat = $('in-boat'),
-					currentFieldWithPlayer = $('.has-character');
-
-				if (characterIsSailing) {
-					currentFieldWithPlayer.removeClass('has-character has-boat');
-					clickedField.addClass('has-character has-boat');
-					character.appendTo(clickedField);
-					characterBoat.appendTo(clickedField);
-					markFieldsForMovement();
-				} else {
-					currentFieldWithPlayer.removeClass('has-character');
-					clickedField.addClass('has-character');
-					character.appendTo(clickedField);
-					markFieldsForMovement();
-				}
-			}
-		} else {
-			if (canHavePlayer && !forbidenFieldForPlayer) {
-				var character = $('player-character'),
-					currentFieldWithPlayer = $('.has-character'),
-					clickedField = $(this);
-
-				currentFieldWithPlayer.removeClass('has-character');
-				clickedField.addClass('has-character');
-				character.appendTo(clickedField);
-				markFieldsForMovement();
-			}
-		}
-
-		updateDetailsPage();
-	});
-}
-
 export const moveCharacterOnKeyboardInput = (fieldMovingTo) => {
+	markFieldsForMovement();
+
 	var canHavePlayer = fieldMovingTo.hasClass('can-have-player'),
 		characterInCar = $('.has-character').hasClass('has-car'),
 		characterInBoat = $('.has-character').hasClass('has-boat'),
 		forbidenFieldForPlayer = fieldMovingTo.hasClass('mountain') || 
+								 fieldMovingTo.hasClass('bridge') || 
 								 fieldMovingTo.hasClass('highway') && !fieldMovingTo.hasClass('has-car') ||
 								 fieldMovingTo.hasClass('coast') && !fieldMovingTo.hasClass('has-boat') ||
 								 fieldMovingTo.hasClass('sea');
@@ -142,8 +65,6 @@ export const moveCharacterOnKeyboardInput = (fieldMovingTo) => {
 			markFieldsForMovement();
 		}
 	}
-
-	updateDetailsPage();
 }
 
 function markFieldsForMovement() {
@@ -158,10 +79,10 @@ function markFieldsForMovement() {
 			prevField = fieldWithCharacter.prev(),
 			upField = fieldWithCharacter.prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev(),
 			downField = fieldWithCharacter.next().next().next().next().next().next().next().next().next().next().next().next().next().next().next().next(),
-			nextFieldCantHavePlayer = nextField.hasClass('mountain') || nextField.hasClass('highway') && !nextField.hasClass('has-car') || nextField.hasClass('coast') && !nextField.hasClass('has-boat') || nextField.hasClass('sea'),
-			prevFieldCantHavePlayer = prevField.hasClass('mountain') || prevField.hasClass('highway') && !prevField.hasClass('has-car') || prevField.hasClass('coast') && !prevField.hasClass('has-boat') || prevField.hasClass('sea'),
-			upFieldCantHavePlayer = upField.hasClass('mountain') || upField.hasClass('highway') && !upField.hasClass('has-car') || upField.hasClass('coast') && !upField.hasClass('has-boat') || upField.hasClass('sea'),
-			downFieldCantHavePlayer = downField.hasClass('mountain') || downField.hasClass('highway') && !downField.hasClass('has-car') || downField.hasClass('coast') && !downField.hasClass('has-boat') || downField.hasClass('sea');
+			nextFieldCantHavePlayer = nextField.hasClass('mountain') || nextField.hasClass('highway') && !nextField.hasClass('has-car') || nextField.hasClass('coast') && !nextField.hasClass('has-boat') || nextField.hasClass('sea') || nextField.hasClass('bridge'),
+			prevFieldCantHavePlayer = prevField.hasClass('mountain') || prevField.hasClass('highway') && !prevField.hasClass('has-car') || prevField.hasClass('coast') && !prevField.hasClass('has-boat') || prevField.hasClass('sea') || prevField.hasClass('bridge'),
+			upFieldCantHavePlayer = upField.hasClass('mountain') || upField.hasClass('highway') && !upField.hasClass('has-car') || upField.hasClass('coast') && !upField.hasClass('has-boat') || upField.hasClass('sea') || upField.hasClass('bridge'),
+			downFieldCantHavePlayer = downField.hasClass('mountain') || downField.hasClass('highway') && !downField.hasClass('has-car') || downField.hasClass('coast') && !downField.hasClass('has-boat') || downField.hasClass('sea') || downField.hasClass('bridge');
 
 		if (characterInCar) {
 			nextFieldCantHavePlayer = nextField.hasClass('mountain') || nextField.hasClass('coast') && !nextField.hasClass('has-boat') || nextField.hasClass('sea') || nextField.hasClass('bridge') && nextField.hasClass('has-boat');

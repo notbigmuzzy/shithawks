@@ -1,9 +1,9 @@
 /*IMPORT FUNCTIONS*/
 import { keyboardControls } from './assets/logics/keyboardControls.js';
-import { tabChangeOnHashChange } from './assets/logics/tabChangeOnHashChange.js';
-import { characterMovement } from './assets/logics/characterMovement.js';
+import { tabChange } from './assets/logics/tabChange.js';
+import { nextDay } from './assets/logics/nextDay.js'
 
 /*EXECUTE FUNCTIONS*/
 keyboardControls();
-tabChangeOnHashChange();
-characterMovement();
+tabChange();
+nextDay();

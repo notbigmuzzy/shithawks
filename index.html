@@ -13,25 +13,28 @@
 <a href="#details">Details</a>
 <a href="#business">Business</a>
 <a href="#help">Help</a>
+<button class="next-day-button">Next day</button>
 </div>
-<div class="next-day-button"><span>Next<br>day</span></div>
 </menu-wrapper><pages-wrapper><map-page id="map">
 <center-wrapper>
 <sidebar-wrapper>
-<modal-float class="junfo-time">
-<modal-title>Date</modal-title>
-<modal-body>
-<p>day<i class="day">5</i></p>
-<p>,week<i class="week">1</i></p>
-</modal-body>
-</modal-float>
-<modal-float class="junfo-radio hidden">
-<modal-title>Radio</modal-title>
-<modal-body>Pause > -- Next >></modal-body>
-</modal-float>
 <modal-float class="junfo-polizia hidden">
 <modal-title>Polizia</modal-title>
 <modal-body>* * * * *</modal-body>
+</modal-float>
+<modal-float class="junfo-time">
+<modal-title>Date</modal-title>
+<modal-body>
+<p>day<i class="day">1</i></p>
+<p>,week<i class="week">1</i></p>
+</modal-body>
+</modal-float>
+<modal-float class="junfo-stats">
+<modal-title>Stats</modal-title>
+<modal-body class="vertical">
+<p>Energy:<i class="guns">3</i></p>
+<p>Health:<i class="cash">100</i></p>
+</modal-body>
 </modal-float>
 <modal-float class="junfo-inventory">
 <modal-title>Inventory</modal-title>
@@ -43,9 +46,26 @@
 <p>Bitches:<i class="bitches">0</i></p>
 </modal-body>
 </modal-float>
-<modal-float class="junfo-stats">
-<modal-title>Stats</modal-title>
-<modal-body></modal-body>
+<modal-float class="junfo-radio hidden">
+<modal-title>Radio</modal-title>
+<modal-body>Pause > -- Next >></modal-body>
+</modal-float>
+<modal-float class="junfo-log">
+<modal-title>Log</modal-title>
+<modal-body class="vertical">
+<p>You visited bank in City6.</p>
+<p>Boat was picked up by police.</p>
+<p>You visited bank in City6.</p>
+<p>Boat was picked up by police.</p>
+<p>You visited bank in City6.</p>
+<p>Boat was picked up by police.</p>
+<p>You visited bank in City6.</p>
+<p>Boat was picked up by police.</p>
+<p>You visited bank in City6.</p>
+<p>Boat was picked up by police.</p>
+<p>You visited bank in City6.</p>
+<p>Boat was picked up by police.</p>
+</modal-body>
 </modal-float>
 </sidebar-wrapper>
 <main-wrapper>
@@ -130,10 +150,23 @@
 </half-wrapper>
 </center-wrapper>
 </business-page><help-page id="help">
-<help-wrapper>
-<div>help </div>
-<div> help </div>
-<div>help</div>
-</help-wrapper>
-</help-page></pages-wrapper><!-- SCRIPTS--><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<center-wrapper>
+<full-wrapper>
+<modal-float>
+<modal-title>Help</modal-title>
+<modal-body>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque condimentum, felis sit amet convallis efficitur, felis erat vehicula tellus, sit amet finibus diam dui id sapien. Praesent mollis interdum sem ac vehicula. Sed cursus posuere ornare.</p>
+<p>Praesent in vehicula justo. Etiam bibendum porta magna, sed feugiat orci mollis nec. Proin et congue turpis. Praesent tortor nisi, porta eget aliquet eget, eleifend hendrerit nulla. Maecenas efficitur arcu ac scelerisque semper.</p>
+</modal-body>
+</modal-float>
+<modal-float>
+<modal-title>Info</modal-title>
+<modal-body>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque condimentum, felis sit amet convallis efficitur, felis erat vehicula tellus, sit amet finibus diam dui id sapien. Praesent mollis interdum sem ac vehicula. Sed cursus posuere ornare.</p>
+<p>Praesent in vehicula justo. Etiam bibendum porta magna, sed feugiat orci mollis nec. Proin et congue turpis. Praesent tortor nisi, porta eget aliquet eget, eleifend hendrerit nulla. Maecenas efficitur arcu ac scelerisque semper.</p>
+</modal-body>
+</modal-float>
+</full-wrapper>
+</center-wrapper>
+</help-page></pages-wrapper><!-- SCRIPTS--><script src="jquery.min.js"></script>
 <script type="module" defer src="index.js"></script></body></html>
