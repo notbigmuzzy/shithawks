@@ -1,16 +1,16 @@
 #body {
 	display: flex;
 	flex-direction: column;
+	height: 100%;
 }
 
 menu-wrapper {
-	overflow: hidden;
-	a {
-		&.active-tab {
-			pointer-events: none;
-		}
-	}
-	
+	height: 40px;
+	min-height: 40px;
+}
+
+pages-wrapper {
+	height: calc(100% - 40px);
 }
 
 center-wrapper {
@@ -19,16 +19,31 @@ center-wrapper {
 	height: 100%;
 	max-width: 1000px;
 	margin: 0 auto;
+	max-height: 100vh;
 }
 
-pages-wrapper {
-	flex-grow: 9;
+sidebar-wrapper {
+	flex-basis: 25%;
+	overflow-y: auto;
+	height: 100%;
+	@include hide-scrollbars;
+}
+
+main-wrapper {
+	flex-basis: 75%;
+	max-height: 100%;
+}
+
+half-wrapper {
+	flex-basis: 50%;
+	overflow-y: auto;
+	height: 100%;
+	@include hide-scrollbars;
 }
 
 map-page,
-game-page,
-list-page,
-errands-page,
+details-page,
+business-page,
 help-page {
 	display: block;
 	position: absolute;

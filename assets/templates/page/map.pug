@@ -1,30 +1,44 @@
 <map-page id="map">
     <center-wrapper>
         <sidebar-wrapper>
-            <modal-float>
-                <div>R A D I O</div>
-                <hr>
-                <div><span>PLAY >|</span>...<span>NEXT >></span></div>
+            <modal-float class="junfo-time">
+                <modal-title>Date</modal-title>
+                <modal-body>
+                    <p>day<i class="day">5</i></p>
+                    <p>,week<i class="week">1</i></p>
+                </modal-body>
             </modal-float>
-            <modal-float>
-                <div>P O L I Z I A</div>
-                <hr>
-                <div><span>*</span><span>*</span><span>*</span><span>*</span><span>*</span></div>
+            <modal-float class="junfo-radio hidden">
+                <modal-title>Radio</modal-title>
+                <modal-body>Pause > -- Next >></modal-body>
             </modal-float>
-            <modal-float>
-                <div>S T A T S</div>
-                <hr>
-
+            <modal-float class="junfo-polizia hidden">
+                <modal-title>Polizia</modal-title>
+                <modal-body>* * * * *</modal-body>
+            </modal-float>
+            <modal-float class="junfo-inventory">
+                <modal-title>Inventory</modal-title>
+                <modal-body class="vertical">
+                    <p>Cash:<i class="cash">200$</i></p>
+                    <p>Guns:<i class="guns">1</i></p>
+                    <p>Drugs:<i class="cash">0</i></p>
+                    <p>Space:<i class="cash">100</i></p>
+                    <p>Bitches:<i class="bitches">0</i></p>
+                </modal-body>
+            </modal-float>
+            <modal-float class="junfo-stats">
+                <modal-title>Stats</modal-title>
+                <modal-body></modal-body>
             </modal-float>
 
         </sidebar-wrapper>
-        <map-wrapper>
-                <modal-float class="map-float">
-                    <the-map>
-                        include ../maps/island-map.pug
-                    </the-map>
-                </modal-float>
-        </menu-wrapper>
+        <main-wrapper>
+            <modal-float class="map-float">
+                <the-map>
+                    include ../maps/island-map.pug
+                </the-map>
+            </modal-float>
+        </main-wrapper>
     </center-wrapper>
 </map-page>
 

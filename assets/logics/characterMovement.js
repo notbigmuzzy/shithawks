@@ -1,7 +1,152 @@
+import { updateDetailsPage } from './update-stats/detailsPage.js';
+
 export const characterMovement = () => {
 	//MARK FIELD FOR MOVEMENT
 	markFieldsForMovement();
-	function markFieldsForMovement() {
+	updateDetailsPage();
+
+	//MOVE ON CLICK
+	$(document).on('click','.field', function() {
+		var clickedField = $(this),
+			characterInCar = $('.has-character').hasClass('has-car'),
+			characterInBoat = $('.has-character').hasClass('has-boat'),
+			canHavePlayer = clickedField.hasClass('can-have-player'),
+			forbidenFieldForPlayer = clickedField.hasClass('mountain') || 
+									 clickedField.hasClass('highway') && !clickedField.hasClass('has-car') ||
+									 clickedField.hasClass('coast') && !clickedField.hasClass('has-boat') ||
+									 clickedField.hasClass('sea');
+
+		if (characterInCar) {
+			forbidenFieldForPlayer = clickedField.hasClass('mountain') ||
+									 clickedField.hasClass('coast') && !clickedField.hasClass('has-boat') ||
+									 clickedField.hasClass('sea');
+			if (canHavePlayer && !forbidenFieldForPlayer) {
+				var character = $('player-character'),
+					characterIsOnRoad = clickedField.hasClass('highway') || clickedField.hasClass('bridge'),
+					characterCar = $('in-car'),
+					currentFieldWithPlayer = $('.has-character');
+
+				if (characterIsOnRoad) {
+					currentFieldWithPlayer.removeClass('has-character has-car');
+					clickedField.addClass('has-character has-car');
+					character.appendTo(clickedField);
+					characterCar.appendTo(clickedField);
+					markFieldsForMovement();
+				} else {
+					currentFieldWithPlayer.removeClass('has-character');
+					clickedField.addClass('has-character');
+					character.appendTo(clickedField);
+					markFieldsForMovement();
+				}
+			}
+		} else if (characterInBoat) {
+			forbidenFieldForPlayer = clickedField.hasClass('mountain') ||
+									 clickedField.hasClass('sea');
+			if (canHavePlayer && !forbidenFieldForPlayer) {
+				var character = $('player-character'),
+					characterIsSailing = clickedField.hasClass('coast') || clickedField.hasClass('bridge'),
+					characterBoat = $('in-boat'),
+					currentFieldWithPlayer = $('.has-character');
+
+				if (characterIsSailing) {
+					currentFieldWithPlayer.removeClass('has-character has-boat');
+					clickedField.addClass('has-character has-boat');
+					character.appendTo(clickedField);
+					characterBoat.appendTo(clickedField);
+					markFieldsForMovement();
+				} else {
+					currentFieldWithPlayer.removeClass('has-character');
+					clickedField.addClass('has-character');
+					character.appendTo(clickedField);
+					markFieldsForMovement();
+				}
+			}
+		} else {
+			if (canHavePlayer && !forbidenFieldForPlayer) {
+				var character = $('player-character'),
+					currentFieldWithPlayer = $('.has-character'),
+					clickedField = $(this);
+
+				currentFieldWithPlayer.removeClass('has-character');
+				clickedField.addClass('has-character');
+				character.appendTo(clickedField);
+				markFieldsForMovement();
+			}
+		}
+
+		updateDetailsPage();
+	});
+}
+
+export const moveCharacterOnKeyboardInput = (fieldMovingTo) => {
+	var canHavePlayer = fieldMovingTo.hasClass('can-have-player'),
+		characterInCar = $('.has-character').hasClass('has-car'),
+		characterInBoat = $('.has-character').hasClass('has-boat'),
+		forbidenFieldForPlayer = fieldMovingTo.hasClass('mountain') || 
+								 fieldMovingTo.hasClass('highway') && !fieldMovingTo.hasClass('has-car') ||
+								 fieldMovingTo.hasClass('coast') && !fieldMovingTo.hasClass('has-boat') ||
+								 fieldMovingTo.hasClass('sea');
+
+	if (characterInCar) {
+		forbidenFieldForPlayer = fieldMovingTo.hasClass('mountain') ||
+								 fieldMovingTo.hasClass('coast') && !fieldMovingTo.hasClass('has-boat') ||
+								 fieldMovingTo.hasClass('sea');
+		if (canHavePlayer && !forbidenFieldForPlayer) {
+			var character = $('player-character'),
+				characterIsOnRoad = fieldMovingTo.hasClass('highway') || fieldMovingTo.hasClass('bridge'),
+				characterCar = $('in-car'),
+				currentFieldWithPlayer = $('.has-character');
+
+			if (characterIsOnRoad) {
+				currentFieldWithPlayer.removeClass('has-character has-car');
+				fieldMovingTo.addClass('has-character has-car');
+				character.appendTo(fieldMovingTo);
+				characterCar.appendTo(fieldMovingTo);
+				markFieldsForMovement();
+			} else {
+				currentFieldWithPlayer.removeClass('has-character');
+				fieldMovingTo.addClass('has-character');
+				character.appendTo(fieldMovingTo);
+				markFieldsForMovement();
+			}
+		}
+	} else if (characterInBoat) {
+		forbidenFieldForPlayer = fieldMovingTo.hasClass('mountain') ||
+								 fieldMovingTo.hasClass('sea');
+		if (canHavePlayer && !forbidenFieldForPlayer) {
+			var character = $('player-character'),
+				characterIsSailing = fieldMovingTo.hasClass('coast') || fieldMovingTo.hasClass('bridge'),
+				characterBoat = $('in-boat'),
+				currentFieldWithPlayer = $('.has-character');
+
+			if (characterIsSailing) {
+				currentFieldWithPlayer.removeClass('has-character has-boat');
+				fieldMovingTo.addClass('has-character has-boat');
+				character.appendTo(fieldMovingTo);
+				characterBoat.appendTo(fieldMovingTo);
+				markFieldsForMovement();
+			} else {
+				currentFieldWithPlayer.removeClass('has-character');
+				fieldMovingTo.addClass('has-character');
+				character.appendTo(fieldMovingTo);
+				markFieldsForMovement();
+			}
+		}
+	} else {
+		if (canHavePlayer && !forbidenFieldForPlayer) {
+			var character = $('player-character'),
+				currentFieldWithPlayer = $('.has-character');
+			currentFieldWithPlayer.removeClass('has-character');
+			fieldMovingTo.addClass('has-character');
+			character.appendTo(fieldMovingTo);
+			markFieldsForMovement();
+		}
+	}
+
+	updateDetailsPage();
+}
+
+function markFieldsForMovement() {
 		//Clean prev fields
 		$('.can-have-player').removeClass('can-have-player');
 
@@ -19,141 +164,21 @@ export const characterMovement = () => {
 			downFieldCantHavePlayer = downField.hasClass('mountain') || downField.hasClass('highway') && !downField.hasClass('has-car') || downField.hasClass('coast') && !downField.hasClass('has-boat') || downField.hasClass('sea');
 
 		if (characterInCar) {
-			nextFieldCantHavePlayer = nextField.hasClass('mountain') || nextField.hasClass('coast') && !nextField.hasClass('has-boat') || nextField.hasClass('sea');
-			prevFieldCantHavePlayer = prevField.hasClass('mountain') || prevField.hasClass('coast') && !prevField.hasClass('has-boat') || prevField.hasClass('sea');
-			upFieldCantHavePlayer = upField.hasClass('mountain') || upField.hasClass('coast') && !upField.hasClass('has-boat') || upField.hasClass('sea');
-			downFieldCantHavePlayer = downField.hasClass('mountain') || downField.hasClass('coast') && !downField.hasClass('has-boat') || downField.hasClass('sea');
+			nextFieldCantHavePlayer = nextField.hasClass('mountain') || nextField.hasClass('coast') && !nextField.hasClass('has-boat') || nextField.hasClass('sea') || nextField.hasClass('bridge') && nextField.hasClass('has-boat');
+			prevFieldCantHavePlayer = prevField.hasClass('mountain') || prevField.hasClass('coast') && !prevField.hasClass('has-boat') || prevField.hasClass('sea') || prevField.hasClass('bridge') && prevField.hasClass('has-boat');
+			upFieldCantHavePlayer = upField.hasClass('mountain') || upField.hasClass('coast') && !upField.hasClass('has-boat') || upField.hasClass('sea') || upField.hasClass('bridge') && upField.hasClass('has-boat');
+			downFieldCantHavePlayer = downField.hasClass('mountain') || downField.hasClass('coast') && !downField.hasClass('has-boat') || downField.hasClass('sea') || downField.hasClass('bridge') && downField.hasClass('has-boat');
 		}
 
 		if (characterInBoat) {
-			console.log('3')
-			nextFieldCantHavePlayer = nextField.hasClass('mountain') || nextField.hasClass('highway') && !nextField.hasClass('has-car') || nextField.hasClass('sea'),
-			prevFieldCantHavePlayer = prevField.hasClass('mountain') || prevField.hasClass('highway') && !prevField.hasClass('has-car') || prevField.hasClass('sea'),
-			upFieldCantHavePlayer = upField.hasClass('mountain') || upField.hasClass('highway') && !upField.hasClass('has-car') || upField.hasClass('sea'),
-			downFieldCantHavePlayer = downField.hasClass('mountain') || downField.hasClass('highway') && !downField.hasClass('has-car') || downField.hasClass('sea');
+			nextFieldCantHavePlayer = nextField.hasClass('mountain') || nextField.hasClass('highway') && !nextField.hasClass('has-car') || nextField.hasClass('sea') || nextField.hasClass('bridge') && nextField.hasClass('has-car'),
+			prevFieldCantHavePlayer = prevField.hasClass('mountain') || prevField.hasClass('highway') && !prevField.hasClass('has-car') || prevField.hasClass('sea') || prevField.hasClass('bridge') && prevField.hasClass('has-car'),
+			upFieldCantHavePlayer = upField.hasClass('mountain') || upField.hasClass('highway') && !upField.hasClass('has-car') || upField.hasClass('sea') || upField.hasClass('bridge') && upField.hasClass('has-car'),
+			downFieldCantHavePlayer = downField.hasClass('mountain') || downField.hasClass('highway') && !downField.hasClass('has-car') || downField.hasClass('sea') || downField.hasClass('bridge') && downField.hasClass('has-car');
 		}
 
-		if (!nextFieldCantHavePlayer) {
-			nextField.addClass('can-have-player');
-		}
-
-		if (!prevFieldCantHavePlayer) {
-			prevField.addClass('can-have-player');
-		}
-
-		if (!upFieldCantHavePlayer) {
-			upField.addClass('can-have-player');
-		}
-
-		if (!downFieldCantHavePlayer) {
-			downField.addClass('can-have-player');
-		}
+		!nextFieldCantHavePlayer ? nextField.addClass('can-have-player') : "";
+		!prevFieldCantHavePlayer ? prevField.addClass('can-have-player') : "";
+		!upFieldCantHavePlayer ? upField.addClass('can-have-player') : "";
+		!downFieldCantHavePlayer ? downField.addClass('can-have-player') : "";
 	}
-
-	//MOVE ON CLICK
-	$(document).on('click','.field', function() {
-		var clickedField = $(this), 
-			canHavePlayer = clickedField.hasClass('can-have-player'),
-			forbidenFieldForPlayer = clickedField.hasClass('mountain') || 
-									 clickedField.hasClass('highway') && !clickedField.hasClass('has-car') ||
-									 clickedField.hasClass('coast') && !clickedField.hasClass('has-boat') ||
-									 clickedField.hasClass('sea');
-
-		if(canHavePlayer && !forbidenFieldForPlayer) {
-			var character = $('player-character'),
-				currentFieldWithPlayer = $('.has-character'),
-				clickedField = $(this);
-
-			currentFieldWithPlayer.removeClass('has-character');
-			clickedField.addClass('has-character');
-			character.appendTo(clickedField);
-			markFieldsForMovement();
-		}
-	});
-
-	//MOVE ON KEYBOARD
-	onkeyup = (e) => {
-		if (e.key == "ArrowRight") {
-			e.preventDefault();
-			var nextField = $('.has-character').next();
-			movePlayerCharacterOnKeyboardInput(nextField);
-		} else if (e.key == "ArrowLeft") {
-			e.preventDefault();
-			var prevField = $('.has-character').prev();
-			movePlayerCharacterOnKeyboardInput(prevField);
-		} else if (e.key == "ArrowUp") {
-			e.preventDefault();
-			var upField = $('.has-character').prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev();
-			movePlayerCharacterOnKeyboardInput(upField);
-		} else if (e.key == "ArrowDown") {
-			e.preventDefault();
-			var downField = $('.has-character').next().next().next().next().next().next().next().next().next().next().next().next().next().next().next().next();
-			movePlayerCharacterOnKeyboardInput(downField);
-		};
-	};
-	function movePlayerCharacterOnKeyboardInput(fieldMovingTo) {
-		var canHavePlayer = fieldMovingTo.hasClass('can-have-player'),
-			characterInCar = $('.has-character').hasClass('has-car'),
-			characterInBoat = $('.has-character').hasClass('has-boat'),
-			forbidenFieldForPlayer = fieldMovingTo.hasClass('mountain') || 
-									 fieldMovingTo.hasClass('highway') && !fieldMovingTo.hasClass('has-car') ||
-									 fieldMovingTo.hasClass('coast') && !fieldMovingTo.hasClass('has-boat') ||
-									 fieldMovingTo.hasClass('sea');
-
-		if (characterInCar) {
-			forbidenFieldForPlayer = fieldMovingTo.hasClass('mountain') ||
-									 fieldMovingTo.hasClass('coast') && !fieldMovingTo.hasClass('has-boat') ||
-									 fieldMovingTo.hasClass('sea');
-			if (canHavePlayer && !forbidenFieldForPlayer) {
-				var character = $('player-character'),
-					characterIsOnRoad = fieldMovingTo.hasClass('highway') || fieldMovingTo.hasClass('bridge'),
-					characterCar = $('in-car'),
-					currentFieldWithPlayer = $('.has-character');
-
-				if (characterIsOnRoad) {
-					currentFieldWithPlayer.removeClass('has-character has-car');
-					fieldMovingTo.addClass('has-character has-car');
-					character.appendTo(fieldMovingTo);
-					characterCar.appendTo(fieldMovingTo);
-					markFieldsForMovement();
-				} else {
-					currentFieldWithPlayer.removeClass('has-character');
-					fieldMovingTo.addClass('has-character');
-					character.appendTo(fieldMovingTo);
-					markFieldsForMovement();
-				}
-			}
-		} else if (characterInBoat) {
-			forbidenFieldForPlayer = fieldMovingTo.hasClass('mountain') ||
-									 fieldMovingTo.hasClass('sea');
-			if (canHavePlayer && !forbidenFieldForPlayer) {
-				var character = $('player-character'),
-					characterIsSailing = fieldMovingTo.hasClass('coast') || fieldMovingTo.hasClass('bridge'),
-					characterBoat = $('in-boat'),
-					currentFieldWithPlayer = $('.has-character');
-
-				if (characterIsSailing) {
-					currentFieldWithPlayer.removeClass('has-character has-boat');
-					fieldMovingTo.addClass('has-character has-boat');
-					character.appendTo(fieldMovingTo);
-					characterBoat.appendTo(fieldMovingTo);
-					markFieldsForMovement();
-				} else {
-					currentFieldWithPlayer.removeClass('has-character');
-					fieldMovingTo.addClass('has-character');
-					character.appendTo(fieldMovingTo);
-					markFieldsForMovement();
-				}
-			}
-		} else {
-			if (canHavePlayer && !forbidenFieldForPlayer) {
-				var character = $('player-character'),
-					currentFieldWithPlayer = $('.has-character');
-				currentFieldWithPlayer.removeClass('has-character');
-				fieldMovingTo.addClass('has-character');
-				character.appendTo(fieldMovingTo);
-				markFieldsForMovement();
-			}
-		}
-	}
-}

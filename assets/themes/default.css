@@ -1,5 +1,4 @@
 :root {
-
     /*INTERFACE*/
     --black: #000;
     --white: #fff;
@@ -25,6 +24,6 @@
     /*CITY*/
     --alpine: #e1e1e1;
     --desert: #c67702;
-    --coastal: #074177;
+    --coastal: #074f77;
     --grasland: #518432;
 }
