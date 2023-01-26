@@ -1,10 +1,13 @@
 export const resetEnergy = () => {
 	var currentCharacter = $('.has-character'),
-		movementPoints = 3;
-	if (currentCharacter.hasClass('has-car')) {
-		movementPoints = 5;
+		movementPoints = window.saveState.stats.energy;
+
+	if (currentCharacter.hasClass('city') || currentCharacter.hasClass('sand') || currentCharacter.hasClass('forest')) {
+		movementPoints = window.saveState.stats.lowenergy;
+	} else if (currentCharacter.hasClass('has-car')) {
+		movementPoints = window.saveState.stats.carenergy;
 	} else if (currentCharacter.hasClass('has-boat')) {
-		movementPoints = 5;
+		movementPoints = window.saveState.stats.boatenergy;
 	}
 
 	window.saveState.stats.energy = movementPoints;

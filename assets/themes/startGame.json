@@ -5,6 +5,9 @@
   },
   "stats": {
     "energy": 3,
+    "lowenergy": 2,
+    "carenergy": 5,
+    "boatenergy": 6,
     "health": 100
   }
 }

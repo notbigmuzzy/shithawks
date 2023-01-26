@@ -24,8 +24,11 @@ export const moveCharacterOnKeyboardInput = (fieldMovingTo) => {
 			if (characterIsOnRoad) {
 				if (movementPoints > 0) {
 					reduceEnergyOnMovement();
-					currentFieldWithPlayer.removeClass('has-character has-car');
 					fieldMovingTo.addClass('has-character has-car');
+					if (currentFieldWithPlayer.hasClass('refilled')) {
+						fieldMovingTo.addClass('refilled');
+					}
+					currentFieldWithPlayer.removeClass('has-character has-car refilled');
 					character.appendTo(fieldMovingTo);
 					characterCar.appendTo(fieldMovingTo);
 					markFieldsForMovement();
@@ -58,8 +61,11 @@ export const moveCharacterOnKeyboardInput = (fieldMovingTo) => {
 			if (characterIsSailing) {
 				if (movementPoints > 0) {
 					reduceEnergyOnMovement();
-					currentFieldWithPlayer.removeClass('has-character has-boat');
 					fieldMovingTo.addClass('has-character has-boat');
+					if (currentFieldWithPlayer.hasClass('refilled')) {
+						fieldMovingTo.addClass('refilled');
+					}
+					currentFieldWithPlayer.removeClass('has-character has-boat refilled');
 					character.appendTo(fieldMovingTo);
 					characterBoat.appendTo(fieldMovingTo);
 					markFieldsForMovement();
@@ -87,20 +93,32 @@ export const moveCharacterOnKeyboardInput = (fieldMovingTo) => {
 				characterIsOnRoad = fieldMovingTo.hasClass('highway') || fieldMovingTo.hasClass('bridge'),
 				currentFieldWithPlayer = $('.has-character');
 
-			if (characterIsSailing || characterIsOnRoad) {
+			if (characterIsOnRoad) {
 				if (movementPoints > 0) {
 					reduceEnergyOnMovement();
-					window.saveState.stats.energy = 5;
-					var energyField = $('.junfo-stats .energy');
-					energyField.html(window.saveState.stats.energy);
 					currentFieldWithPlayer.removeClass('has-character');
 					fieldMovingTo.addClass('has-character');
 					character.appendTo(fieldMovingTo);
+					if (!fieldMovingTo.hasClass('refilled')) {
+						fieldMovingTo.addClass('refilled');
+						window.saveState.stats.energy = window.saveState.stats.carenergy;
+						var energyField = $('.junfo-stats .energy');
+						energyField.html(window.saveState.stats.energy);
+					}
 					markFieldsForMovement();
 				}
-				if (movementPoints == 1) {
-					//removeMarkedFieldsForMovement();
-				}
+			} else if (characterIsSailing) {
+					reduceEnergyOnMovement();
+					currentFieldWithPlayer.removeClass('has-character');
+					fieldMovingTo.addClass('has-character');
+					character.appendTo(fieldMovingTo);
+					if (!fieldMovingTo.hasClass('refilled')) {
+						fieldMovingTo.addClass('refilled');
+						window.saveState.stats.energy = window.saveState.stats.boatenergy;
+						var energyField = $('.junfo-stats .energy');
+						energyField.html(window.saveState.stats.energy);
+					}
+					markFieldsForMovement();
 			} else {
 				if (movementPoints > 0) {
 					reduceEnergyOnMovement();
