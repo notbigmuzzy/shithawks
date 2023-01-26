@@ -7,6 +7,9 @@ export const startMeUp = () => {
 
 	if (readState) {
 		window.saveState = JSON.parse(readState);
+		updateMapPage();
+		updateDetailsPage();
+		updateBusinessPage();
 	} else {
 		var startGameJSON = "./assets/themes/startGame.json";
 		fetch(startGameJSON).then((response) => response.json()).then((data) => {
@@ -14,13 +17,6 @@ export const startMeUp = () => {
 			updateMapPage();
 			updateDetailsPage();
 			updateBusinessPage();
-		});
-	
-
-
-		
+		});	
 	}
-
-	//UPDATE HTML VALUES
-
 }
