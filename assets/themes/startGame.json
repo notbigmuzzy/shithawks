@@ -2,5 +2,9 @@
   "date": {
     "day": 1,
     "week": 1
+  },
+  "stats": {
+    "energy": 3,
+    "health": 100
   }
 }

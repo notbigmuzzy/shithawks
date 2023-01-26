@@ -3,6 +3,7 @@ import { saveState } from '../saving/saveState.js';
 import { updateMapPage } from './updateMapPage.js';
 import { updateDetailsPage } from './updateDetailsPage.js';
 import { updateBusinessPage } from './updateBusinessPage.js';
+import { markFieldsForMovement } from './functions/markFieldsForMovement.js'
 
 export const nextDayUpdate = () => {
 	//UPDATE STATE
@@ -14,5 +15,7 @@ export const nextDayUpdate = () => {
 	//UPDATE DETAILS PAGE
 		updateDetailsPage();
 	//UPDATE BUSINESS PAGE
-		updateBusinessPage()
+		updateBusinessPage();
+	//MARK FIELDS FOR MOVEMENT
+		markFieldsForMovement();
 }

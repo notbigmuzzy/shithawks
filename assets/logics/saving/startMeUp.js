@@ -1,4 +1,3 @@
-import startGame from '../../../assets/themes/startGame.json' assert {type: 'json'};
 import { updateMapPage } from '../update/updateMapPage.js';
 import { updateDetailsPage } from '../update/updateDetailsPage.js';
 import { updateBusinessPage } from '../update/updateBusinessPage.js';
@@ -9,11 +8,19 @@ export const startMeUp = () => {
 	if (readState) {
 		window.saveState = JSON.parse(readState);
 	} else {
-		window.saveState = startGame;
+		var startGameJSON = "./assets/themes/startGame.json";
+		fetch(startGameJSON).then((response) => response.json()).then((data) => {
+			window.saveState = data;
+			updateMapPage();
+			updateDetailsPage();
+			updateBusinessPage();
+		});
+	
+
+
+		
 	}
 
 	//UPDATE HTML VALUES
-	updateMapPage();
-	updateDetailsPage();
-	updateBusinessPage();
+
 }
