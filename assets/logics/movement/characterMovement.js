@@ -107,7 +107,11 @@ export const moveCharacterOnKeyboardInput = (fieldMovingTo) => {
 					}
 					markFieldsForMovement();
 				}
+				if (movementPoints == 1) {
+					removeMarkedFieldsForMovement();
+				}
 			} else if (characterIsSailing) {
+				if (movementPoints > 0) {
 					reduceEnergyOnMovement();
 					currentFieldWithPlayer.removeClass('has-character');
 					fieldMovingTo.addClass('has-character');
@@ -119,6 +123,10 @@ export const moveCharacterOnKeyboardInput = (fieldMovingTo) => {
 						energyField.html(window.saveState.stats.energy);
 					}
 					markFieldsForMovement();
+				}
+				if (movementPoints == 1) {
+					removeMarkedFieldsForMovement();
+				}
 			} else {
 				if (movementPoints > 0) {
 					reduceEnergyOnMovement();
