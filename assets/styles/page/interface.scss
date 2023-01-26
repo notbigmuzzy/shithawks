@@ -1,77 +1,3 @@
-#menu {
-	a[href="#map"] {
-		&:first-letter {
-			color: $red;
-		}
-		&.active-tab {
-			background-color: $red;
-			color: $white;
-			&:first-letter {
-				background-color: $white;
-			}
-		}
-	}
-	a[href="#details"] {
-		&:first-letter {
-			color: $blue;
-		}
-		&.active-tab {
-			background-color: $blue;
-			color: $white;
-			&:first-letter {
-				background-color: $white;
-			}
-		}
-	}
-	a[href="#business"] {
-		&:first-letter {
-			color: $green;
-		}
-		&.active-tab {
-			background-color: $green;
-			color: $white;
-			&:first-letter {
-				background-color: $white;
-			}
-		}
-	}
-	a[href="#help"] {
-		&:first-letter {
-			color: $darkgray;
-		}
-		&.active-tab {
-			background-color: $darkgray;
-			color: $white;
-			&:first-letter {
-				background-color: $white;
-			}
-		}
-	}
-}
-
-pages-wrapper {
-	#map {
-		&.active-page {
-			background-color: $red;
-		}
-	}
-	#details {
-		&.active-page {
-			background-color: $blue;
-		}
-	}
-	#business {
-		&.active-page {
-			background-color: $green;
-		}
-	}
-	#help {
-		&.active-page {
-			background-color: $darkgray;
-		}
-	}
-}
-
 modal-float {
 	display: flex;
 	flex-direction: column;
@@ -119,9 +45,11 @@ modal-float {
 
 		i {
 			display: inline-block;
-			padding: 0 2px;
-			margin-left: 2px;
+			padding: 0 3px;
+			margin-left: 3px;
 			font-weight: bold;
+			background-color: $black;
+			color: $white;
 		}
 
 		p {
@@ -139,6 +67,26 @@ modal-float {
 			overflow: auto;
 			display: block;
 			@include hide-scrollbars;
+
+			p {
+				font-style: italic;
+				font-size: 14px;
+				border-bottom: 3px;
+				border-style: double;
+				margin-bottom: 10px;
+				padding-bottom: 10px;
+				font-family: monospace;
+
+				&:last-child {
+					margin-bottom: 0;
+					padding-bottom: 0;
+					border-bottom: none;
+				}
+
+				&:hover {
+					opacity: 1;
+				}
+			}
 		}
 	}
 
@@ -161,8 +109,16 @@ modal-float {
 		top: 15px;
 		left: 10px;
 		background-color: $black;
-		opacity: 0.75;
+		opacity: 0.5;
+		transition: opacity 0.2s;
 		z-index: 1;
+	}
+
+	&:hover,
+	&:focus {
+		&:after {
+			opacity: 0.75;
+		}
 	}
 }
 

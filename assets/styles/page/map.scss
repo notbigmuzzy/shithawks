@@ -200,3 +200,26 @@ the-map,
 		}
 	}
 }
+
+pages-wrapper {
+	#map {
+		&.active-page {
+			background-color: $red;
+		}
+	}
+	#details {
+		&.active-page {
+			background-color: $blue;
+		}
+	}
+	#business {
+		&.active-page {
+			background-color: $green;
+		}
+	}
+	#help {
+		&.active-page {
+			background-color: $darkgray;
+		}
+	}
+}

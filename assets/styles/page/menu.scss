@@ -14,6 +14,58 @@ menu-wrapper {
 		background-color: $black;
 		flex-grow: 9;
 
+		a[href="#map"] {
+			&:first-letter {
+				color: $red;
+			}
+			&.active-tab {
+				background-color: $red;
+				color: $white;
+				&:first-letter {
+					background-color: $white;
+				}
+			}
+		}
+
+		a[href="#details"] {
+			&:first-letter {
+				color: $blue;
+			}
+			&.active-tab {
+				background-color: $blue;
+				color: $white;
+				&:first-letter {
+					background-color: $white;
+				}
+			}
+		}
+
+		a[href="#business"] {
+			&:first-letter {
+				color: $green;
+			}
+			&.active-tab {
+				background-color: $green;
+				color: $white;
+				&:first-letter {
+					background-color: $white;
+				}
+			}
+		}
+		
+		a[href="#help"] {
+			&:first-letter {
+				color: $darkgray;
+			}
+			&.active-tab {
+				background-color: $darkgray;
+				color: $white;
+				&:first-letter {
+					background-color: $white;
+				}
+			}
+		}
+
 		a,
 		span {
 			display: block;
@@ -64,5 +116,4 @@ menu-wrapper {
 			}
 		}
 	}
-
 }

@@ -1,0 +1,47 @@
+modal-float {
+
+	&.map-help {
+		&:before {
+			background-color: $red;
+		}
+		modal-title {
+			background-color: $white;
+		}
+		modal-body {
+			border-color: $white;
+			p {
+				color: $white;
+			}
+		}
+	}
+
+	&.details-help {
+		&:before {
+			background-color: $blue;
+		}
+		modal-title {
+			background-color: $white;
+		}
+		modal-body {
+			border-color: $white;
+			p {
+				color: $white;
+			}
+		}
+	}
+
+	&.business-help {
+		&:before {
+			background-color: $green;
+		}
+		modal-title {
+			background-color: $white;
+		}
+		modal-body {
+			border-color: $white;
+			p {
+				color: $white;
+			}
+		}
+	}
+}
