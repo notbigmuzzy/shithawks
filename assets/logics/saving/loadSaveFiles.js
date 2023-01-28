@@ -12,9 +12,27 @@ export const loadSaveFiles = () => {
 		});
 		sortedItems.forEach( key  => {
 			if (key !== 'saveState') {
-				$saveFileList.append('<savefile-item><span id="' + key + '">../' + key + '</span></savefile-item>');
+				$saveFileList.append('<savefile-item><span class="click-load">../' + key + '</span><span class="load-file hidden" id="' + key + '">Yes,I\'m sure!</span></savefile-item>');
 			}
 		});
 		$saveFileList.addClass('populated');
-	})
+	});
+
+	$(document).on('click', 'savefile-item span', function(e) {
+		$(this).addClass('disable');
+		$(this).parents('savefile-item').find('.load-file').removeClass('hidden');
+	});
+
+	$(document).on('click', 'savefile-item .load-file', function(e) {
+		//REMOVE PREVIOUS SAVESTATE
+		window.saveState = '';
+		localStorage.removeItem('saveState');
+		//INSERT NEW SAVESTATE
+		var clickedItemSaveState = $(this).attr('id'),
+			getRedundantSaveState = localStorage.getItem(clickedItemSaveState);
+		localStorage.setItem('saveState', getRedundantSaveState);
+		window.saveState = getRedundantSaveState;
+		window.location.hash = '#map';
+		location.reload();
+	});
 }
