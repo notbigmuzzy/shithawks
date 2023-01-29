@@ -1,6 +1,11 @@
 .map-float {
 	max-width: calc(100% - 30px);
 	height: calc(100% - 50px);
+	padding: 10px;
+
+	&:before {
+		background-color: $sea;
+	}
 }
 
 the-map {
@@ -57,7 +62,6 @@ the-map,
 				outline: 2px dashed rgba(white,1);
 				z-index: 5;
 				scale: 1.25;
-				border-radius: 20%;
 			}
 		}
 

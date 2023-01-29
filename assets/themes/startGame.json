@@ -1,11 +1,19 @@
 {
+  "characters": {
+    "player": "<player-character><img class='default' src='assets/sprites/character.png'/></player-character>",
+    "car": "<in-car><img class='default' src='assets/sprites/character-car.png'/></in-car>",
+    "boat": "<in-boat><img class='default' src='assets/sprites/character-boat.png'/></in-boat>"
+  },
   "date": {
     "day": 1,
     "week": 1
   },
   "stats": {
+    "playerordinal": 122,
+    "carordinal": 156,
+    "boatordinal": 120,
     "energy": 3,
-    "lowenergy": 2,
+    "lowenergy": 3,
     "carenergy": 5,
     "boatenergy": 6,
     "health": 100

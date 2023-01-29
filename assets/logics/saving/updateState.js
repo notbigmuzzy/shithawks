@@ -25,4 +25,13 @@ function makeChanges(state) {
 		movementPoints = 5;
 	}
 	state.stats.energy = movementPoints;
+
+	var currentPosition = $('.has-character').attr("data-ordinal");
+		state.stats.playerordinal = currentPosition;
+
+	var currentCarPosition = $('.has-car').attr("data-ordinal");
+		state.stats.carordinal = currentCarPosition;
+
+	var currentBoatPosition = $('.has-boat').attr("data-ordinal");
+		state.stats.boatordinal = currentBoatPosition;
 }
