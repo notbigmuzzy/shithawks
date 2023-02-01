@@ -41,3 +41,19 @@ export const tabChange = () => {
 		currentPage.classList.add('active-page');
 	}
 }
+
+export const mapOverviewTabs = () => {
+	$('over-tab').click(function() {
+		if ( $(this).hasClass('map') ) {
+			$('.map-float').removeClass('overview').addClass('map');
+		} else if ( $(this).hasClass('overview') ) {
+			$('.map-float').removeClass('map').addClass('overview').addClass($('overview-icon.active').attr('data-overviewicon'));
+		}
+	});
+
+	$('overview-icon').click(function(e) {
+		e.stopPropagation();
+		$(this).addClass('active').siblings().removeClass();
+		$('.map-float').removeClass('city-overview road-overview character-overview').addClass( $(this).attr('data-overviewicon') );
+	});
+}

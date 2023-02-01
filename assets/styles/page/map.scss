@@ -1,19 +1,350 @@
 .map-float {
-	max-width: calc(100% - 30px);
-	height: calc(100% - 50px);
+	position: relative;
 	padding: 10px;
 
-	&:before {
-		background-color: $sea;
+	the-map {
+		display: flex;
+		flex-wrap: wrap;
+		width: 660px;
+		height: 672px;
 	}
-}
 
-the-map {
-	display: flex;
-	flex-wrap: wrap;
-	width: 100%;
-	height: 100%;
-	background-color: $black;
+	tab-overview {
+		position: absolute;
+		top: 50px;
+		right: -5px;
+		width: 60px;
+		height: auto;
+
+		over-tab {
+			position: relative;
+			display: block;
+			z-index: 3;
+
+			icons-tab {
+				display: none;
+				flex-direction: column;
+				position: absolute;
+				top: 100%;
+				width: 60px;
+				background: $black;
+
+				overview-icon {
+					display: flex;
+					height: 40px;
+					align-items: center;
+					justify-content: center;
+					font-weight: bold;
+					text-transform: uppercase;
+					color: $white;
+					opacity: 0.5;
+				}
+			}
+
+			&.map {
+				height: 75px;
+			}
+
+			&.overview {
+				height: 120px;
+			}			
+
+			span {
+				display: block;
+				transform: rotate(90deg);
+				position: relative;
+				top: 40px;
+				font-weight: bold;
+				text-transform: uppercase;
+			}
+
+			&:hover {
+				cursor: pointer;
+			}
+		}
+
+		&:before {
+			content: "";
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			background-color: var(--lightgray);
+			z-index: 2;
+		}
+
+		&:after {
+			content: "";
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top: 15px;
+			left: 10px;
+			background-color: var(--black);
+			opacity: .5;
+			transition: opacity .2s;
+			z-index: 1;
+		}
+	}
+
+	&:before,
+	&:after {
+		width: 680px;
+		height: 692px;
+	}
+
+	&.map {
+		the-map {
+			outline: 5px solid $sea;
+			background-color: $black;
+		}
+
+		over-tab {
+			&.map {
+				background-color: $sea;
+				color: $white;
+			}
+		}
+	}
+
+	&.overview {
+		the-map {
+			outline: 5px solid $black;
+			background-color: $black;
+
+			i {
+				opacity: 0.25;
+				pointer-events: none;
+			}
+		}
+
+		icons-tab {
+			display: flex;
+
+			overview-icon.active {
+				opacity: 1;
+			}
+		}
+
+		over-tab {
+			&.overview {
+				background-color: $black;
+				color: $white;
+			}
+		}
+
+		tab-overview:after {
+			height: 160%;
+		}
+
+		&.city-overview {
+			the-map {
+				[data-territory="city1"],
+				[data-territory="city2"],
+				[data-territory="city3"],
+				[data-territory="city4"],
+				[data-territory="city5"] {
+					opacity: 1;
+					pointer-events: initial;
+
+					city-name,
+					player-character,
+					in-car,
+					in-boat {
+						display: none;
+					}
+
+					&:hover {
+						cursor: pointer;
+						filter: drop-shadow(2px 4px 6px black) brightness(1.25);
+						outline: 2px dashed rgba(white,1);
+						z-index: 15;
+						scale: 1.25;
+
+						&:after,
+						&:before {
+							opacity: 0.2 !important;
+						}
+					}
+
+					&:after {
+						content: "";
+						position: absolute;
+						top: 0;
+						left: 0;
+						right: 0;
+						height: 100%;
+						z-index: 9;
+						opacity: 0.5;
+					}
+				}
+				[data-territory="city1"] {
+					&:after {
+						background-color: $red;
+					}
+				}
+				[data-territory="city2"] {
+					&:after {
+						background-color: $green;
+					}
+				}
+				[data-territory="city3"] {
+					&:after {
+						background-color: $cyan;
+					}
+				}
+				[data-territory="city4"] {
+					&:after {
+						background-color: $yellow;
+					}
+				}
+				[data-territory="city5"] {
+					&:after {
+						background-color: $white;
+					}
+				}
+			}	
+		}
+
+		&.road-overview {
+			the-map {
+				city-name,
+				player-character,
+				in-car,
+				in-boat {
+						display: none;
+				}
+
+				[data-territory="north-road"] {
+					opacity: 1;
+					pointer-events: initial;
+					&:before {
+						content: "";
+						position: absolute;
+						top: 0;
+						left: 0;
+						right: 0;
+						height: 100%;
+						z-index: 9;
+						opacity: 0.5;
+					}
+					&:hover {
+						cursor: pointer;
+						filter: drop-shadow(2px 4px 6px black) brightness(1.25);
+						outline: 2px dashed rgba(white,1);
+						z-index: 5;
+						scale: 1.25;
+					}
+				}
+				[data-territory="west-road"] {
+					opacity: 1;
+					pointer-events: initial;
+					&:before {
+						content: "";
+						position: absolute;
+						top: 0;
+						left: 0;
+						right: 0;
+						height: 100%;
+						z-index: 9;
+						opacity: 0.5;
+					}
+					&:hover {
+						cursor: pointer;
+						filter: drop-shadow(2px 4px 6px black) brightness(1.25);
+						outline: 2px dashed rgba(white,1);
+						z-index: 5;
+						scale: 1.25;
+					}
+				}
+				[data-territory="east-road"] {
+					opacity: 1;
+					pointer-events: initial;
+					&:before {
+						content: "";
+						position: absolute;
+						top: 0;
+						left: 0;
+						right: 0;
+						height: 100%;
+						z-index: 9;
+						opacity: 0.5;
+					}
+					&:hover {
+						cursor: pointer;
+						filter: drop-shadow(2px 4px 6px black) brightness(1.25);
+						outline: 2px dashed rgba(white,1);
+						z-index: 5;
+						scale: 1.25;
+					}
+				}
+				[data-territory="south-road"] {
+					opacity: 1;
+					pointer-events: initial;
+					&:before {
+						content: "";
+						position: absolute;
+						top: 0;
+						left: 0;
+						right: 0;
+						height: 100%;
+						z-index: 9;
+						opacity: 0.5;
+					}
+					&:hover {
+						cursor: pointer;
+						filter: drop-shadow(2px 4px 6px black) brightness(1.25);
+						outline: 2px dashed rgba(white,1);
+						z-index: 5;
+						scale: 1.25;
+					}
+				}
+				[data-territory="north-road"] {
+					&:before {
+						background-color: $red;
+					}
+				}
+				[data-territory="west-road"] {
+					&:before {
+						background-color: $green;
+					}
+				}
+				[data-territory="east-road"] {
+					&:before {
+						background-color: $cyan;
+					}
+				}
+				[data-territory="south-road"] {
+					&:before {
+						background-color: $yellow;
+					}
+				}
+			}	
+		}
+
+		&.character-overview {
+			the-map {
+				city-name {
+						display: none;
+				}
+
+				.has-character,
+				.has-car,
+				.has-boat {
+					opacity: 1;
+					pointer-events: initial;
+					&:hover {
+						cursor: pointer;
+						filter: drop-shadow(2px 4px 6px black) brightness(1.25);
+						outline: 2px dashed rgba(white,1);
+						z-index: 5;
+						scale: 1.25;
+					}
+				}
+			}	
+		}
+	}
 }
 
 the-map,
@@ -25,6 +356,10 @@ the-map,
 		position: relative;
 		flex-basis: 6.25%;
 		outline:1px dotted rgba(black,0.05);
+		width: 42px;
+		height: 42px;
+		max-width: 42px;
+		max-height: 42px;
 
 		.sprite {
 			position: absolute;
@@ -56,13 +391,6 @@ the-map,
 		&.action,
 		&.city {
 			z-index: 1;
-			&:hover {
-				cursor: pointer;
-				filter: drop-shadow(2px 4px 6px black) brightness(1.25);
-				outline: 2px dashed rgba(white,1);
-				z-index: 5;
-				scale: 1.25;
-			}
 		}
 
 		&.sea {
@@ -80,6 +408,12 @@ the-map,
 				opacity: 0.25;
 			}
 
+			&.rocks {
+				.sprite {
+					opacity: 0.5;
+				}				
+			}
+
 			player-character {
 				.default,
 				.car {
@@ -93,6 +427,10 @@ the-map,
 
 		&.land {
 			background-color: $grass;
+
+			&.crops {
+				background-color: $grasland;
+			}
 		}
 
 		&.sand {
@@ -101,6 +439,18 @@ the-map,
 
 		&.highway {
 			background-color: $highway;
+
+			&.parking {
+				border: 2px solid gray;
+				
+				&.bd {
+					border-bottom: 0;
+				}
+
+				&.bu {
+					border-top: 0;	
+				}
+			}
 
 			&:after {
 				content: "-";
@@ -166,6 +516,10 @@ the-map,
 
 		&.forest {
 			background-color: $forest;
+
+			&.alpine {
+				background-color: $alpine;
+			}
 		}
 
 		&.mountain {

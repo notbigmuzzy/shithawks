@@ -52,10 +52,21 @@
             </modal-float>
         </sidebar-wrapper>
         <main-wrapper>
-            <modal-float class="map-float">
+            <modal-float class="map-float map">
                 <the-map>
                     include ../maps/island-map.pug
                 </the-map>
+                <tab-overview>
+                    <over-tab class="map"><span>Map</span></over-tab>
+                    <over-tab class="overview">
+                        <span>Overview</span>
+                        <icons-tab>
+                            <overview-icon data-overviewicon="city-overview" class="active">C</overview-icon>
+                            <overview-icon data-overviewicon="road-overview">H</overview-icon>
+                            <overview-icon data-overviewicon="character-overview">P</overview-icon>
+                        </icons-tab>
+                    </over-tab>
+                </tab-overview>
             </modal-float>
         </main-wrapper>
     </center-wrapper>
