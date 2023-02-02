@@ -63,7 +63,7 @@ modal-float {
 
 	&.junfo-log {
 		modal-body {
-			max-height: 300px;
+			max-height: 250px;
 			overflow: auto;
 			display: block;
 			@include hide-scrollbars;

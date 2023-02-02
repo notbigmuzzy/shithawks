@@ -517,6 +517,16 @@ the-map,
 		&.forest {
 			background-color: $forest;
 
+			&[data-ordinal="15"],
+			&[data-ordinal="26"],
+			&[data-ordinal="27"],
+			&[data-ordinal="43"],
+			&[data-ordinal="48"],
+			&[data-ordinal="77"],
+			&[data-ordinal="80"] {
+				background-color: $grasland;
+			}
+
 			&.alpine {
 				background-color: $alpine;
 			}
@@ -524,6 +534,10 @@ the-map,
 
 		&.mountain {
 			background-color: $mountain;
+
+			&.alpine {
+				background-color: $alpine;
+			}
 
 			&.sand {
 				background-color: $sand;
