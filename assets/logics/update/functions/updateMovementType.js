@@ -1,37 +1,33 @@
-export const updateMovementType = (pos, field, msg) => {
-	if (pos.hasClass('has-car')) {
-		msg = "You're in a car!"
-	} else if (pos.hasClass('has-boat')) {
-		msg = "You're on a boat!"
-	} else if (pos.hasClass('city')) {
-		if (pos.hasClass('hideout')) {
-			msg = "You're in your hideout!"
-		} else {
-			msg = "You're in a city!"
-		}
-	} else {
-		msg = "You're on foot!"
-	}
+export const updateMovementType = (pos, field) => {
+	var message = defineMessage(pos, field);
 	
 	//UPDATE ALL STATS FIELD
-	field.html('<p>' + msg + '</p>')
+	field.html('<p>' + message + '</p>')
 }
 
-export const updateMovementLog = (pos, field, msg) => {
-	if (pos.hasClass('has-car')) {
-		msg = "You're in a car!"
-	} else if (pos.hasClass('has-boat')) {
-		msg = "You're on a boat!"
-	} else if (pos.hasClass('city')) {
-		if (pos.hasClass('hideout')) {
-			msg = "You're in your hideout!"
-		} else {
-			msg = "You're in a city!"
-		}
-	} else {
-		msg = "You're on foot!"
-	}
+export const updateMovementLog = (pos, field) => {
+	var message = defineMessage(pos, field);
 	
 	//UPDATE ALL STATS FIELD
-	field.prepend('<p>' + msg + '</p>')
+	field.prepend('<p>' + message + '</p>')
+}
+
+function defineMessage(pos, field) {
+	var mesage = window.saveState.message.default;
+
+	if (pos.hasClass('has-car')) {
+		mesage = window.saveState.message.inCar;
+	} else if (pos.hasClass('has-boat')) {
+		mesage = window.saveState.message.onBoat;
+	} else if (pos.hasClass('city')) {
+		if (pos.hasClass('hideout')) {
+			mesage = window.saveState.message.inHideout;
+		} else {
+			mesage = window.saveState.message.inCity;
+		}
+	} else {
+		mesage = window.saveState.message.onFoot;
+	}
+
+	return mesage;
 }

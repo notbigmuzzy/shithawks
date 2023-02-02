@@ -17,5 +17,20 @@
     "carenergy": 5,
     "boatenergy": 6,
     "health": 100
+  },
+  "inventory": {
+    "cash": 2000,
+    "guns": 0,
+    "drugs": 0,
+    "space": 100,
+    "bitches": 0
+  },
+  "message": {
+    "onFoot": "You're on foot!",
+    "onBoat": "You're on a boat!",
+    "inCar": "You're in a car!",
+    "inHideout": "You're in your hideout!",
+    "inCity": "You're in a city!",
+    "default": "No info"
   }
 }
