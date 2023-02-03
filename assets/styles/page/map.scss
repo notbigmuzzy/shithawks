@@ -470,6 +470,22 @@ the-map,
 					display: block;
 				}
 			}
+
+			&.summon-car.can-have-player {
+				&:after {
+					content: "GET CAR";
+					position: absolute;
+					top: 0;
+					left: 0;
+					right: 0;
+					height: 100%;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					background-color: $yellow;
+					opacity: 0.5;
+				}
+			}
 		}
 
 		&.bridge {

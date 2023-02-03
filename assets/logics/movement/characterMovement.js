@@ -1,5 +1,6 @@
 import { markFieldsForMovement } from '../update/functions/markFieldsForMovement.js'
 import { resetEnergy } from '../update/functions/stats/resetEnergy.js'
+import { summonCar } from './summonCar.js'
 
 export const moveCharacterOnKeyboardInput = (fieldMovingTo) => {
 	var movementPoints = window.saveState.stats.energy,
@@ -8,7 +9,6 @@ export const moveCharacterOnKeyboardInput = (fieldMovingTo) => {
 		characterInBoat = $('.has-character').hasClass('has-boat'),
 		forbidenFieldForPlayer = fieldMovingTo.hasClass('mountain') || 
 								 fieldMovingTo.hasClass('bridge') || 
-								 fieldMovingTo.hasClass('highway') && !fieldMovingTo.hasClass('has-car') ||
 								 fieldMovingTo.hasClass('coast') && !fieldMovingTo.hasClass('has-boat') ||
 								 fieldMovingTo.hasClass('sea');
 	if (characterInCar) {
@@ -95,6 +95,13 @@ export const moveCharacterOnKeyboardInput = (fieldMovingTo) => {
 
 			if (characterIsOnRoad) {
 				if (movementPoints > 0) {
+
+					if ( fieldMovingTo.hasClass('summon-car') && fieldMovingTo.hasClass('can-have-player') ) {
+						summonCar(fieldMovingTo);
+						reduceEnergyOnMovement();
+						return false;
+					}
+
 					reduceEnergyOnMovement();
 					currentFieldWithPlayer.removeClass('has-character');
 					fieldMovingTo.addClass('has-character');

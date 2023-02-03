@@ -1,7 +1,7 @@
 export const markFieldsForMovement = () => {
 
 		//REMOVE PREVIOUS CANHAVEPLAYER FLAGS
-		$('.can-have-player').removeClass('can-have-player');
+		$('.can-have-player').removeClass('can-have-player summon-car summon-boat');
 		//SETUP CHARACTERS
 		var $fieldWithCharacter = $('.has-character'),
 			$characterInCar = $('.has-character').hasClass('has-car'),
@@ -13,10 +13,10 @@ export const markFieldsForMovement = () => {
 			$upField = $fieldWithCharacter.prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev(),
 			$downField = $fieldWithCharacter.next().next().next().next().next().next().next().next().next().next().next().next().next().next().next().next();
 		//SETUP TYPES
-		var	$nextFieldCantHavePlayer = type($nextField, 'mountain') || type($nextField, 'highway') && !type($nextField, 'has-car') || type($nextField, 'coast') && !type($nextField, 'has-boat') || type($nextField, 'sea') || type($nextField, 'bridge'),
-			$prevFieldCantHavePlayer = type($prevField, 'mountain') || type($prevField, 'highway') && !type($prevField, 'has-car') || type($prevField, 'coast') && !type($prevField, 'has-boat') || type($prevField, 'sea') || type($prevField, 'bridge'),
-			$upFieldCantHavePlayer = type($upField, 'mountain') || type($upField, 'highway') && !type($upField, 'has-car') || type($upField, 'coast') && !type($upField, 'has-boat') || type($upField, 'sea') || type($upField, 'bridge'),
-			$downFieldCantHavePlayer = type($downField, 'mountain') || type($downField, 'highway') && !type($downField, 'has-car') || type($downField, 'coast') && !type($downField, 'has-boat') || type($downField, 'sea') || type($downField, 'bridge');
+		var	$nextFieldCantHavePlayer = type($nextField, 'mountain') || type($nextField, 'coast') && !type($nextField, 'has-boat') || type($nextField, 'sea') || type($nextField, 'bridge'),
+			$prevFieldCantHavePlayer = type($prevField, 'mountain') || type($prevField, 'coast') && !type($prevField, 'has-boat') || type($prevField, 'sea') || type($prevField, 'bridge'),
+			$upFieldCantHavePlayer = type($upField, 'mountain') || type($upField, 'coast') && !type($upField, 'has-boat') || type($upField, 'sea') || type($upField, 'bridge'),
+			$downFieldCantHavePlayer = type($downField, 'mountain') || type($downField, 'coast') && !type($downField, 'has-boat') || type($downField, 'sea') || type($downField, 'bridge');
 		//IN CAR
 		if ($characterInCar) {
 			$nextFieldCantHavePlayer = type($nextField, 'mountain') || type($nextField, 'coast') && !type($nextField, 'has-boat') || type($nextField, 'sea') || type($nextField, 'bridge') && type($nextField, 'has-boat');
@@ -51,6 +51,14 @@ export const markFieldsForMovement = () => {
 		!$upFieldCantHavePlayer ? $upField.addClass('can-have-player') : "";
 		!$downFieldCantHavePlayer ? $downField.addClass('can-have-player') : "";
 
+		//MARK SUMMON CAR
+		if ( !type($fieldWithCharacter, 'has-car') ) {
+			type($nextField, 'highway') && !type($nextField, 'has-car') ? $nextField.addClass('summon-car') : "";
+			type($prevField, 'highway') && !type($prevField, 'has-car') ? $prevField.addClass('summon-car') : "";
+			type($upField, 'highway') && !type($upField, 'has-car') ? $upField.addClass('summon-car') : "";
+			type($downField, 'highway') && !type($downField, 'has-car') ? $downField.addClass('summon-car') : "";
+
+		}
 }
 
 function type(field, type) {
