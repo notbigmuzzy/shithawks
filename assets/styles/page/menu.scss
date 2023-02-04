@@ -98,16 +98,14 @@ menu-wrapper {
 		text-align: center;
 		font-family: Open Sans, sans-serif;
 		background-color: transparent;
-
-		&:disabled {
-			pointer-events: none;
-		}
+		pointer-events: none;
 
 		&:first-letter {
 			color: $yellow;
 		}
 
-		&:hover {
+		&.next {
+			pointer-events: initial;
 			background-color: $yellow;
 			color: $red;
 

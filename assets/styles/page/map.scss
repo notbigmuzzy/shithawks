@@ -423,6 +423,25 @@ the-map,
 					display: block;
 				}
 			}
+
+			&.summon-boat.can-have-player {
+				&:after {
+					content: "GET BOAT";
+					position: absolute;
+					top: 0;
+					left: 0;
+					right: 0;
+					height: 100%;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					background-color: $yellow;
+					opacity: 0.75;
+					font-size: 10px;
+					font-weight: bold;
+					text-align: center;
+				}
+			}
 		}
 
 		&.land {
@@ -484,6 +503,9 @@ the-map,
 					justify-content: center;
 					background-color: $yellow;
 					opacity: 0.5;
+					font-size: 10px;
+					font-weight: bold;
+					text-align: center;
 				}
 			}
 		}

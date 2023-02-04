@@ -1,6 +1,9 @@
 import { markFieldsForMovement } from '../update/functions/markFieldsForMovement.js'
 import { resetEnergy } from '../update/functions/stats/resetEnergy.js'
 import { summonCar } from './summonCar.js'
+import { summonBoat } from './summonBoat.js'
+import { endMovement } from './endMovement.js'
+import { reduceEnergyOnMovement } from './reduceEnergyOnMovement.js'
 
 export const moveCharacterOnKeyboardInput = (fieldMovingTo) => {
 	var movementPoints = window.saveState.stats.energy,
@@ -8,8 +11,7 @@ export const moveCharacterOnKeyboardInput = (fieldMovingTo) => {
 		characterInCar = $('.has-character').hasClass('has-car'),
 		characterInBoat = $('.has-character').hasClass('has-boat'),
 		forbidenFieldForPlayer = fieldMovingTo.hasClass('mountain') || 
-								 fieldMovingTo.hasClass('bridge') || 
-								 fieldMovingTo.hasClass('coast') && !fieldMovingTo.hasClass('has-boat') ||
+								 fieldMovingTo.hasClass('bridge') ||
 								 fieldMovingTo.hasClass('sea');
 	if (characterInCar) {
 		forbidenFieldForPlayer = fieldMovingTo.hasClass('mountain') ||
@@ -34,7 +36,7 @@ export const moveCharacterOnKeyboardInput = (fieldMovingTo) => {
 					markFieldsForMovement();
 				}
 				if (movementPoints == 1) {
-					removeMarkedFieldsForMovement();
+					endMovement();
 				}
 			} else {
 				if (movementPoints > 0) {
@@ -45,7 +47,7 @@ export const moveCharacterOnKeyboardInput = (fieldMovingTo) => {
 					markFieldsForMovement();
 				}
 				if (movementPoints == 1) {
-					removeMarkedFieldsForMovement();
+					endMovement();
 				}
 			}
 		}
@@ -71,7 +73,7 @@ export const moveCharacterOnKeyboardInput = (fieldMovingTo) => {
 					markFieldsForMovement();
 				}
 				if (movementPoints == 1) {
-					removeMarkedFieldsForMovement();
+					endMovement();
 				}
 			} else {
 				if (movementPoints > 0) {
@@ -82,7 +84,7 @@ export const moveCharacterOnKeyboardInput = (fieldMovingTo) => {
 					markFieldsForMovement();
 				}
 				if (movementPoints == 1) {
-					removeMarkedFieldsForMovement();
+					endMovement();
 				}
 			}
 		}
@@ -95,13 +97,14 @@ export const moveCharacterOnKeyboardInput = (fieldMovingTo) => {
 
 			if (characterIsOnRoad) {
 				if (movementPoints > 0) {
-
 					if ( fieldMovingTo.hasClass('summon-car') && fieldMovingTo.hasClass('can-have-player') ) {
 						summonCar(fieldMovingTo);
 						reduceEnergyOnMovement();
+						if (movementPoints == 1) {
+							endMovement();
+						}
 						return false;
 					}
-
 					reduceEnergyOnMovement();
 					currentFieldWithPlayer.removeClass('has-character');
 					fieldMovingTo.addClass('has-character');
@@ -115,10 +118,18 @@ export const moveCharacterOnKeyboardInput = (fieldMovingTo) => {
 					markFieldsForMovement();
 				}
 				if (movementPoints == 1) {
-					removeMarkedFieldsForMovement();
+					endMovement();
 				}
 			} else if (characterIsSailing) {
 				if (movementPoints > 0) {
+					if ( fieldMovingTo.hasClass('summon-boat') && fieldMovingTo.hasClass('can-have-player') ) {
+						summonBoat(fieldMovingTo);
+						reduceEnergyOnMovement();
+						if (movementPoints == 1) {
+							endMovement();
+						}
+						return false;
+					}
 					reduceEnergyOnMovement();
 					currentFieldWithPlayer.removeClass('has-character');
 					fieldMovingTo.addClass('has-character');
@@ -132,7 +143,7 @@ export const moveCharacterOnKeyboardInput = (fieldMovingTo) => {
 					markFieldsForMovement();
 				}
 				if (movementPoints == 1) {
-					removeMarkedFieldsForMovement();
+					endMovement();
 				}
 			} else {
 				if (movementPoints > 0) {
@@ -143,20 +154,9 @@ export const moveCharacterOnKeyboardInput = (fieldMovingTo) => {
 					markFieldsForMovement();
 				}
 				if (movementPoints == 1) {
-					removeMarkedFieldsForMovement();
+					endMovement();
 				}
 			}
 		}
 	}
-}
-
-function removeMarkedFieldsForMovement() {
-	$('.can-have-player').removeClass('can-have-player');
-}
-
-function reduceEnergyOnMovement() {
-	var reducedEnergy = window.saveState.stats.energy - 1;
-	window.saveState.stats.energy = reducedEnergy;
-	var energyField = $('.junfo-stats .energy');
-	energyField.html(reducedEnergy);
 }

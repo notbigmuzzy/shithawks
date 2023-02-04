@@ -6,6 +6,7 @@ import { updateBusinessPage } from './updateBusinessPage.js';
 import { markFieldsForMovement } from './functions/markFieldsForMovement.js'
 
 export const nextDayUpdate = () => {
+	$('.next-day-button').removeClass('next');
 	//UPDATE STATE
 		updateState();
 	//SAVE STATE
