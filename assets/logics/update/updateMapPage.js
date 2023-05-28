@@ -13,7 +13,7 @@ import { updateSpace } from "./functions/stats/updateSpace.js"
 import { updateBitches } from "./functions/stats/updateBitches.js"
 
 export const updateMapPage = () => {
-	var currentCharacterPosition = $('.has-character'),
+	let currentCharacterPosition = $('.has-character'),
 		currentCharacterPositionSprite = currentCharacterPosition.find('.sprite'),
 		updateMovementStatModal = $('.junfo-log modal-body');
 

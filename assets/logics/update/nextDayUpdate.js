@@ -8,15 +8,15 @@ import { markFieldsForMovement } from './functions/markFieldsForMovement.js'
 export const nextDayUpdate = () => {
 	$('.next-day-button').removeClass('next');
 	//UPDATE STATE
-		updateState();
+	updateState();
 	//SAVE STATE
-		saveState();
+	saveState();
 	//UPDATE MAP PAGE
-		updateMapPage();
+	updateMapPage();
 	//UPDATE DETAILS PAGE
-		updateDetailsPage();
+	updateDetailsPage();
 	//UPDATE BUSINESS PAGE
-		updateBusinessPage();
+	updateBusinessPage();
 	//MARK FIELDS FOR MOVEMENT
-		markFieldsForMovement();
+	markFieldsForMovement();
 }

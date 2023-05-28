@@ -4,17 +4,17 @@ export const tabChange = () => {
 
 	function hashChangeTabsChange() {
 		//GET LOCATION HASH
-		var e = location.hash;
+		let e = location.hash;
 		if (e.length == 0) {
 			e = "#map";
 			window.location.hash = "#map";
 		}
 
 		//GET SIBLINGS
-		var currentTab = document.querySelector('[href="' + e + '"]'),
+		let currentTab = document.querySelector('[href="' + e + '"]'),
 			currentPage = document.getElementById(e.substring(1)),
 			getSiblings = function (elem) {
-			var siblings = [],
+			let siblings = [],
 				sibling = elem.parentNode.firstChild;
 
 			while (sibling) {
@@ -27,14 +27,14 @@ export const tabChange = () => {
 		};
 
 		//TABS
-		var otherTabs = getSiblings(currentTab);
+		let otherTabs = getSiblings(currentTab);
 		otherTabs.forEach(function(otherTab) {
 			otherTab.classList.remove('active-tab');
 		})
 		currentTab.classList.add('active-tab');
 
 		//PAGES
-		var otherPages = getSiblings(currentPage);
+		let otherPages = getSiblings(currentPage);
 		otherPages.forEach(function(otherPage) {
 			otherPage.classList.remove('active-page');
 		})

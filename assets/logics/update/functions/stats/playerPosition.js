@@ -1,5 +1,5 @@
 export const playerPosition = () => {
-	var $positionOfPlayerCharacter = window.saveState.stats.playerordinal,
+	let $positionOfPlayerCharacter = window.saveState.stats.playerordinal,
 		$playerCharacter = window.saveState.characters.player,
 		$findOrdinalField = $('[data-ordinal="' + $positionOfPlayerCharacter + '"]');
 

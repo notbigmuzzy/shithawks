@@ -1,5 +1,5 @@
 export const resetEnergy = () => {
-	var currentCharacter = $('.has-character'),
+	let currentCharacter = $('.has-character'),
 		movementPoints = window.saveState.stats.energy;
 
 	if (currentCharacter.hasClass('city') || currentCharacter.hasClass('sand') || currentCharacter.hasClass('forest')) {
@@ -11,6 +11,6 @@ export const resetEnergy = () => {
 	}
 
 	window.saveState.stats.energy = movementPoints;
-	var energyField = $('.junfo-stats .energy');
+	let energyField = $('.junfo-stats .energy');
 	energyField.html(window.saveState.stats.energy);
 }

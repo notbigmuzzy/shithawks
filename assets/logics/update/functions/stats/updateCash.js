@@ -1,4 +1,4 @@
 export const updateCash = () => {
-	var cashField = $('.junfo-inventory .cash');
+	let cashField = $('.junfo-inventory .cash');
 	cashField.html(window.saveState.inventory.cash + '$');
 }

@@ -1,11 +1,50 @@
 IMPLEMENT
+- inventory / inventory on details page
+- city page
+- loan shark
+- bank
 - details page
+- drop drugs
 - radio in car
 - sound of radio quiet when far from car - every block 25-30%
 
+RANDOM
+---
+Officer Bob and 6 deputies - pitifully armed - are chasing you, man!
+Officer Bob hits you, man!
+Officer Bob shoots at you... and misses!
+Panic! You can't get away!
+Officer Bob shoots at you... and kills a bitch!
+You got away!
+	FIGHT	RUN
+You got hit!
+You got away!
+Deal drugs!
+--- 
+
 EVENTS
-- if car empty 5 turn on street - towed moved to location, have to pay to spawn
-- if boat on brigde 3 turn - towed moved to location, have to pay to spawn
-Cops made a big Heroin bust! Prices are outrageous!
-Rival drug dealers raided a pharmacy and are selling cheap ludes!
-Marakesh train has arrived!
+- If car empty 5 turn on street - towed moved to location, have to pay to spawn
+- If boat on brigde 3 turn - towed moved to location, have to pay to spawn
+- Cops made a big Heroin bust! Prices are outrageous!
+- Addicts are buying Cocaine at ridiculous prices!
+- Rival drug dealers raided a pharmacy and are selling cheap ludes!
+- Marakesh train has arrived! The Marrakesh Express has arrived!
+- You hear someone playing `Legalize It` by Mojo Nixon & Skid Roper
+- Visit Dan's house of Guns
+- Visit the pub
+- You find 3 Hashish on a dead dude in the subway!
+
+
+DRUGS
+Acid
+Cocaine
+Hashish
+Heroin
+MDA
+Opium
+PCP
+Peyote
+Shrooms
+Speed
+Viagra
+Weed

@@ -1,10 +1,10 @@
 export const saveState = () => {
-	var saveState = window.saveState,
+	let saveState = window.saveState,
 		oldSaveState = localStorage.getItem('saveState');
 
 	//CREATE REDUNDANCY SAVE FILES
 	if (oldSaveState) {
-		var redundantSaveState = JSON.parse(oldSaveState),
+		let redundantSaveState = JSON.parse(oldSaveState),
 			redundantSaveStateDay = redundantSaveState.date.day,
 			redundantSaveStateWeek = redundantSaveState.date.week,
 			reduntantSaveStateName = "saveState-" + redundantSaveStateDay,

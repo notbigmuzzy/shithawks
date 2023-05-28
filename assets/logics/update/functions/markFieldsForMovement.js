@@ -3,7 +3,7 @@ export const markFieldsForMovement = () => {
 		//REMOVE PREVIOUS CANHAVEPLAYER FLAGS
 		$('.can-have-player').removeClass('can-have-player summon-car summon-boat');
 		//SETUP CHARACTERS
-		var $fieldWithCharacter = $('.has-character'),
+		let $fieldWithCharacter = $('.has-character'),
 			$characterInCar = $('.has-character').hasClass('has-car'),
 			$characterInBoat = $('.has-character').hasClass('has-boat'),
 			$characterOnBridge = $('.has-character').hasClass('bridge');
@@ -69,6 +69,6 @@ export const markFieldsForMovement = () => {
 }
 
 function type(field, type) {
-	var isOfType = field.hasClass(type) ? true : false;
+	let isOfType = field.hasClass(type) ? true : false;
 	return isOfType;
 }

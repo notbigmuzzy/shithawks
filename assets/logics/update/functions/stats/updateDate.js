@@ -1,5 +1,5 @@
 export const updateDate = () => {
-	var dayField = $('.junfo-time .day'),
+	let dayField = $('.junfo-time .day'),
 		weekField = $('.junfo-time .week');
 
 	dayField.html(window.saveState.date.day);

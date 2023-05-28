@@ -1,19 +1,19 @@
 export const updateMovementType = (pos, field) => {
-	var message = defineMessage(pos, field);
+	let message = defineMessage(pos, field);
 	
 	//UPDATE ALL STATS FIELD
 	field.html('<p>' + message + '</p>')
 }
 
 export const updateMovementLog = (pos, field) => {
-	var message = defineMessage(pos, field);
+	let message = defineMessage(pos, field);
 	
 	//UPDATE ALL STATS FIELD
 	field.prepend('<p>' + message + '</p>')
 }
 
 function defineMessage(pos, field) {
-	var mesage = window.saveState.message.default;
+	let mesage = window.saveState.message.default;
 
 	if (pos.hasClass('has-car')) {
 		mesage = window.saveState.message.inCar;

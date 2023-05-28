@@ -1,4 +1,4 @@
 export const updateHealth = () => {
-	var healthField = $('.junfo-stats .health');
+	let healthField = $('.junfo-stats .health');
 	healthField.html(window.saveState.stats.health);
 }

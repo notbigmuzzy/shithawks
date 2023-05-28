@@ -10,19 +10,19 @@ export const keyboardControls = () => {
 	onkeyup = (keyboard) => {
 		if (keyboard.key == "ArrowRight" || keyboard.key == "d") {
 			keyboard.preventDefault();
-			var nextField = $('.has-character').next();
+			let nextField = $('.has-character').next();
 			moveCharacterOnKeyboardInput(nextField);
 		} else if (keyboard.key == "ArrowLeft" || keyboard.key == "a") {
 			keyboard.preventDefault();
-			var prevField = $('.has-character').prev();
+			let prevField = $('.has-character').prev();
 			moveCharacterOnKeyboardInput(prevField);
 		} else if (keyboard.key == "ArrowUp" || keyboard.key == "w") {
 			keyboard.preventDefault();
-			var upField = $('.has-character').prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev();
+			let upField = $('.has-character').prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev();
 			moveCharacterOnKeyboardInput(upField);
 		} else if (keyboard.key == "ArrowDown" || keyboard.key == "s") {
 			keyboard.preventDefault();
-			var downField = $('.has-character').next().next().next().next().next().next().next().next().next().next().next().next().next().next().next().next();
+			let downField = $('.has-character').next().next().next().next().next().next().next().next().next().next().next().next().next().next().next().next();
 			moveCharacterOnKeyboardInput(downField);
 		} else if (keyboard.key == "1" || keyboard.key == "m") {
 			keyboard.preventDefault();

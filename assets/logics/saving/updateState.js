@@ -1,14 +1,14 @@
 function makeChanges(state) {
 	//UPDATE DAY
-	var currentDay = state.date.day;
+	let currentDay = state.date.day;
 		state.date.day = currentDay + 1;
 
 	//UPDATE WEEK
-	var currentWeek = state.date.week;
+	let currentWeek = state.date.week;
 		state.date.week = Math.trunc(currentDay / 7) + 1;
 
 	//UPDATE ENERGY
-	var currentCharacter = $('.has-character'),
+	let currentCharacter = $('.has-character'),
 		movementPoints = 3;
 	if (currentCharacter.hasClass('has-car')) {
 		movementPoints = 5;
@@ -18,21 +18,21 @@ function makeChanges(state) {
 	state.stats.energy = movementPoints;
 
 	//UPDATE POSITION ON FOOT
-	var currentPosition = $('.has-character').attr("data-ordinal");
+	let currentPosition = $('.has-character').attr("data-ordinal");
 		state.stats.playerordinal = currentPosition;
 
 	//UPDATE POSITION IN CAR
-	var currentCarPosition = $('.has-car').attr("data-ordinal");
+	let currentCarPosition = $('.has-car').attr("data-ordinal");
 		state.stats.carordinal = currentCarPosition;
 
 	//UPDATE POSITION ON BOAT
-	var currentBoatPosition = $('.has-boat').attr("data-ordinal");
+	let currentBoatPosition = $('.has-boat').attr("data-ordinal");
 		state.stats.boatordinal = currentBoatPosition;
 }
 
 export const updateState = () => {
 	//READ CURRENT STATE OF GLOBAL VAR
-	var currentState = '';
+	let currentState = '';
 	currentState = window.saveState;
 
 	//MAKE CHANGES

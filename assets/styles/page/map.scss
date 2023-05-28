@@ -181,27 +181,37 @@
 				}
 				[data-territory="city1"] {
 					&:after {
-						background-color: $red;
+						background-color: $red !important;
+						content: '' !important;
+						opacity: 0.5 !important;
 					}
 				}
 				[data-territory="city2"] {
 					&:after {
-						background-color: $green;
+						background-color: $green !important;
+						content: '' !important;
+						opacity: 0.5 !important;
 					}
 				}
 				[data-territory="city3"] {
 					&:after {
-						background-color: $cyan;
+						background-color: $cyan !important;
+						content: '' !important;
+						opacity: 0.5 !important;
 					}
 				}
 				[data-territory="city4"] {
 					&:after {
-						background-color: $yellow;
+						background-color: $yellow !important;
+						content: '' !important;
+						opacity: 0.5 !important;
 					}
 				}
 				[data-territory="city5"] {
 					&:after {
-						background-color: $white;
+						background-color: $white !important;
+						content: '' !important;
+						opacity: 0.5 !important;
 					}
 				}
 			}	

@@ -6,7 +6,7 @@ import { endMovement } from './endMovement.js'
 import { reduceEnergyOnMovement } from './reduceEnergyOnMovement.js'
 
 export const moveCharacterOnKeyboardInput = (fieldMovingTo) => {
-	var movementPoints = window.saveState.stats.energy,
+	let movementPoints = window.saveState.stats.energy,
 		canHavePlayer = fieldMovingTo.hasClass('can-have-player'),
 		characterInCar = $('.has-character').hasClass('has-car'),
 		characterInBoat = $('.has-character').hasClass('has-boat'),
@@ -18,7 +18,7 @@ export const moveCharacterOnKeyboardInput = (fieldMovingTo) => {
 								 fieldMovingTo.hasClass('coast') && !fieldMovingTo.hasClass('has-boat') ||
 								 fieldMovingTo.hasClass('sea');
 		if (canHavePlayer && !forbidenFieldForPlayer) {
-			var character = $('player-character'),
+			let character = $('player-character'),
 				characterIsOnRoad = fieldMovingTo.hasClass('highway') || fieldMovingTo.hasClass('bridge'),
 				characterCar = $('in-car'),
 				currentFieldWithPlayer = $('.has-character');
@@ -55,7 +55,7 @@ export const moveCharacterOnKeyboardInput = (fieldMovingTo) => {
 		forbidenFieldForPlayer = fieldMovingTo.hasClass('mountain') ||
 								 fieldMovingTo.hasClass('sea');
 		if (canHavePlayer && !forbidenFieldForPlayer) {
-			var character = $('player-character'),
+			let character = $('player-character'),
 				characterIsSailing = fieldMovingTo.hasClass('coast') || fieldMovingTo.hasClass('bridge'),
 				characterBoat = $('in-boat'),
 				currentFieldWithPlayer = $('.has-character');
@@ -90,7 +90,7 @@ export const moveCharacterOnKeyboardInput = (fieldMovingTo) => {
 		}
 	} else {
 		if (canHavePlayer && !forbidenFieldForPlayer) {
-			var character = $('player-character'),
+			let character = $('player-character'),
 				characterIsSailing = fieldMovingTo.hasClass('coast') || fieldMovingTo.hasClass('bridge'),
 				characterIsOnRoad = fieldMovingTo.hasClass('highway') || fieldMovingTo.hasClass('bridge'),
 				currentFieldWithPlayer = $('.has-character');
@@ -112,7 +112,7 @@ export const moveCharacterOnKeyboardInput = (fieldMovingTo) => {
 					if (!fieldMovingTo.hasClass('refilled')) {
 						fieldMovingTo.addClass('refilled');
 						window.saveState.stats.energy = window.saveState.stats.carenergy;
-						var energyField = $('.junfo-stats .energy');
+						let energyField = $('.junfo-stats .energy');
 						energyField.html(window.saveState.stats.energy);
 					}
 					markFieldsForMovement();
@@ -137,7 +137,7 @@ export const moveCharacterOnKeyboardInput = (fieldMovingTo) => {
 					if (!fieldMovingTo.hasClass('refilled')) {
 						fieldMovingTo.addClass('refilled');
 						window.saveState.stats.energy = window.saveState.stats.boatenergy;
-						var energyField = $('.junfo-stats .energy');
+						let energyField = $('.junfo-stats .energy');
 						energyField.html(window.saveState.stats.energy);
 					}
 					markFieldsForMovement();
