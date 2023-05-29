@@ -33,18 +33,32 @@
     "inCity": "You're in a city!",
     "default": "No info"
   },
-  "drugs": {
-    "Acid": 0,
-    "Cocaine": 0,
-    "Hashish": 0,
-    "Heroin": 0,
-    "MDA": 0,
-    "Opium": 0,
-    "PCP": 0,
-    "Peyote": 0,
-    "Shrooms": 0,
-    "Speed": 0,
-    "Viagra": 0,
-    "Weed": 0
+  "spice": {
+    "Acid": 15,
+    "Cocaine": 500,
+    "Hashish": 40,
+    "Heroin": 120,
+    "MDA": 60,
+    "Opium": 45,
+    "PCP": 30,
+    "Peyote": 65,
+    "Shrooms": 90,
+    "Speed": 110,
+    "Viagra": 50,
+    "Weed": 80
+  },
+  "flow": {
+    "Acid": 15,
+    "Cocaine": 500,
+    "Hashish": 40,
+    "Heroin": 120,
+    "MDA": 60,
+    "Opium": 45,
+    "PCP": 30,
+    "Peyote": 65,
+    "Shrooms": 90,
+    "Speed": 110,
+    "Viagra": 50,
+    "Weed": 80
   }
 }

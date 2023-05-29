@@ -120,6 +120,60 @@ modal-float {
 			opacity: 0.75;
 		}
 	}
+
+	&.drug {
+		drug-stat {
+			display: block;
+			width: 100%;
+			font-size: 20px;
+			line-height: 1.5;
+			margin-bottom: 20px;
+			padding-bottom: 20px;
+			border-bottom: 1px dashed black;
+
+			d-label {
+				display: inline-block;
+				min-width: 100px;
+			}
+
+			d-price {
+				display: inline-block;
+
+				i {
+					background-color: transparent;
+					color: $black;
+					padding: 0;
+					margin: 0;
+					font-weight: initial;
+				}
+			}
+
+			d-graph {
+				display: flex;
+				flex-direction: row;
+				width: 100%;
+				background: var(--darkgray);
+				height: 50px;
+				overflow: hidden;
+
+				dg-point {
+					display: flex;
+					align-items: flex-end;
+					width: 5%;
+					padding: 0 2px;
+
+					i {
+						display: block;
+						padding: 0;
+						margin: 0;
+						width: 100%;
+						border: 1px dashed $white;
+						background-color: var(--lightgray);
+					}
+				}
+			}
+		}
+	}
 }
 
 #details {
