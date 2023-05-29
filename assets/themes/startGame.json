@@ -32,5 +32,19 @@
     "inHideout": "You're in your hideout!",
     "inCity": "You're in a city!",
     "default": "No info"
+  },
+  "prices": {
+    "Acid": 0,
+    "Cocaine": 0,
+    "Hashish": 0,
+    "Heroin": 0,
+    "MDA": 0,
+    "Opium": 0,
+    "PCP": 0,
+    "Peyote": 0,
+    "Shrooms": 0,
+    "Speed": 0,
+    "Viagra": 0,
+    "Weed": 0
   }
 }

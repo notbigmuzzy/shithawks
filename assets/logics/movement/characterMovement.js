@@ -1,5 +1,5 @@
-import { markFieldsForMovement } from '../update/functions/markFieldsForMovement.js'
-import { resetEnergy } from '../update/functions/stats/resetEnergy.js'
+import { markFieldsForMovement } from '../movement/markFieldsForMovement.js'
+import { resetEnergy } from '../update/stats/resetEnergy.js'
 import { summonCar } from './summonCar.js'
 import { summonBoat } from './summonBoat.js'
 import { endMovement } from './endMovement.js'

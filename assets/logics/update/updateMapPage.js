@@ -1,16 +1,17 @@
-import { carPosition } from "./functions/stats/carPosition.js"
-import { boatPosition } from "./functions/stats/boatPosition.js"
-import { playerPosition } from "./functions/stats/playerPosition.js"
-import { updateDate } from "./functions/stats/updateDate.js"
-import { resetEnergy } from "./functions/stats/resetEnergy.js"
-import { updateHealth } from "./functions/stats/updateHealth.js"
-import { updateRefill } from "./functions/stats/updateRefill.js"
-import { updateMovementLog } from "./functions/updateMovementType.js"
-import { updateCash } from "./functions/stats/updateCash.js"
-import { updateGuns } from "./functions/stats/updateGuns.js"
-import { updateDrugs } from "./functions/stats/updateDrugs.js"
-import { updateSpace } from "./functions/stats/updateSpace.js"
-import { updateBitches } from "./functions/stats/updateBitches.js"
+import { carPosition } from "./stats/carPosition.js"
+import { boatPosition } from "./stats/boatPosition.js"
+import { playerPosition } from "./stats/playerPosition.js"
+import { updateDate } from "./stats/updateDate.js"
+import { resetEnergy } from "./stats/resetEnergy.js"
+import { updateHealth } from "./stats/updateHealth.js"
+import { updateRefill } from "./stats/updateRefill.js"
+import { updateMovementLog } from "./stats/updateMovementType.js"
+import { updateCash } from "./stats/updateCash.js"
+import { updateGuns } from "./stats/updateGuns.js"
+import { updateDrugs } from "./stats/updateDrugs.js"
+import { updateSpace } from "./stats/updateSpace.js"
+import { updateBitches } from "./stats/updateBitches.js"
+import { updateDrugPrices } from "./stats/updateDrugPrices.js"
 
 export const updateMapPage = () => {
 	let currentCharacterPosition = $('.has-character'),
@@ -29,6 +30,7 @@ export const updateMapPage = () => {
 	updateDrugs();
 	updateSpace();
 	updateBitches();
+	updateDrugPrices();
 
 	//INIT UPDATE FUNCTIONS
 	updateMovementLog(currentCharacterPosition,updateMovementStatModal);

@@ -1,6 +1,6 @@
-import { moveCharacterOnKeyboardInput } from './movement/characterMovement.js';
-import { nextDayUpdate } from './update/nextDayUpdate.js';
-import { markFieldsForMovement } from './update/functions/markFieldsForMovement.js';
+import { moveCharacterOnKeyboardInput } from '../movement/characterMovement.js';
+import { nextDayUpdate } from '../nextDay.js';
+import { markFieldsForMovement } from '../movement/markFieldsForMovement.js';
 
 export const keyboardControls = () => {
 	//INITIAL MARK FOR MOVEMENT

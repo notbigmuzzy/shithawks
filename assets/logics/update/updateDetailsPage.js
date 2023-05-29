@@ -1,5 +1,5 @@
-import { updateMovementType } from "./functions/updateMovementType.js"
-import { updateMapDetails } from "./functions/updateMapDetails.js"
+import { updateMovementType } from "./stats/updateMovementType.js"
+import { updateMapDetails } from "./stats/updateMapDetails.js"
 
 export const updateDetailsPage = () => {
 	let currentCharacterPosition = $('.has-character'),
