@@ -33,7 +33,7 @@
     "inCity": "You're in a city!",
     "default": "No info"
   },
-  "prices": {
+  "drugs": {
     "Acid": 0,
     "Cocaine": 0,
     "Hashish": 0,

@@ -9,14 +9,14 @@ import { markFieldsForMovement } from './movement/markFieldsForMovement.js'
 
 export const nextDayUpdate = () => {
 	$('.next-day-button').removeClass('next');
-	//UPDATE STATE
-	updateState();
-	//SAVE STATE
-	saveState();
 	//RANDOM EVENT
 	happening();
 	//ECONOMY
 	runEconomy();
+	//UPDATE STATE
+	updateState();
+	//SAVE STATE
+	saveState();
 	//UPDATE MAP PAGE
 	updateMapPage();
 	//UPDATE DETAILS PAGE

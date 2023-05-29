@@ -38,6 +38,8 @@ export const updateState = () => {
 	//MAKE CHANGES
 	makeChanges(currentState);
 
+	console.log(currentState.drugs)
+
 	//WRITE OUT CHANGES TO GLOBAL VAR
 	window.saveState = currentState;
 }
