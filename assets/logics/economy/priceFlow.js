@@ -1,21 +1,32 @@
-export const priceFlow = (dopeName,lastDopePrice,bottomPrice,topPrice,flowAmount,flowTendency) => {
-	switch (flowTendency) {
-		case 'positive':
-			flowAmount = flowAmount * 1;
-			break;
-		case 'negative':
-			flowAmount = flowAmount * -1;
-			break;
-		default:
-	    	flowAmount = 0;
-	}
+import { flowControl } from './flowControl.js'
+import { priceBottomedOut } from '../events/priceBottomedOut.js'
+import { priceToDamnHigh } from '../events/priceToDamnHigh.js'
 
-	//APPLY FLOWAMOUNT
-	let newPrice = lastDopePrice += flowAmount;
+export const priceFlow = (
+		dopeName,
+		lastDopePrice,
+		bottomPrice,
+		topPrice,
+		flowAmount,
+		flowTendency,
+		globalEconomy,
+		priceCorrection,
+		newPrice
+	) => {
+
+	//GET DRUGS PRICE CORRECTION
+	priceCorrection = flowControl(priceCorrection,flowAmount,flowTendency,globalEconomy);
+	newPrice = lastDopePrice += priceCorrection;
+
+	
+
+
 	//IF NEW DRUG PRICE BELLOW 0
-	newPrice <= 0 ? newPrice = bottomPrice : newPrice;
+	newPrice = priceBottomedOut(dopeName,newPrice, bottomPrice);
+
 	//IF NEW DRUG PRICE ABOVE TOP
-	newPrice >= topPrice ? newPrice = topPrice : newPrice;
+	newPrice = priceToDamnHigh(dopeName,newPrice, topPrice);
+
 	//RETURN NEWPRICE
 	return newPrice;
 }

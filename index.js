@@ -5,6 +5,7 @@ import { keyboardControls } from './assets/logics/interaction/keyboardControls.j
 import { tabChange } from './assets/logics/interaction/tabChange.js';
 import { mapOverviewTabs } from './assets/logics/interaction/tabChange.js';
 import { nextDayOnClick } from './assets/logics/interaction/mouseControls.js'
+import { debugControls } from './assets/logics/debug/debugControl.js'
 
 /*EXECUTE FUNCTIONS*/
 startMeUp();
@@ -13,3 +14,4 @@ tabChange();
 nextDayOnClick();
 loadSaveFiles();
 mapOverviewTabs();
+debugControls();

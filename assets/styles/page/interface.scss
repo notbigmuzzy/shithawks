@@ -61,6 +61,19 @@ modal-float {
 		}
 	}
 
+	hr {
+		border: 1px solid $black;
+	}
+
+	button {
+		background-color: transparent;
+		border: 3px dashed $black;
+		font-size: 14px;
+		text-transform: uppercase;
+		padding: 10px;
+		font-weight: bold;
+	}
+
 	&.junfo-log {
 		modal-body {
 			max-height: 250px;
@@ -71,11 +84,21 @@ modal-float {
 			p {
 				font-style: italic;
 				font-size: 14px;
+				line-height: 1.25;
 				border-bottom: 3px;
 				border-style: double;
 				margin-bottom: 10px;
 				padding-bottom: 10px;
 				font-family: monospace;
+
+				&.important {
+					font-size: 12px;
+					background-color: var(--red);
+					color: $white;
+					border: none;
+					padding: 5px;
+					font-size: 12px;
+				}
 
 				&:last-child {
 					margin-bottom: 0;
@@ -130,6 +153,12 @@ modal-float {
 			margin-bottom: 20px;
 			padding-bottom: 20px;
 			border-bottom: 1px dashed black;
+
+			&:last-child {
+				margin-bottom: 0;
+				padding-bottom: 0;
+				border-bottom: none;
+			}
 
 			d-label {
 				display: inline-block;

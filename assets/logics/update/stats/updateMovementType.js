@@ -10,6 +10,12 @@ export const updateMovementLog = (pos, field) => {
 	
 	//UPDATE ALL STATS FIELD
 	field.prepend('<p>' + message + '</p>')
+
+	//REMOVE OLD LOGS
+	let oldLogs = $('.junfo-log').find('.vertical p').length
+	if (oldLogs >= 21) {
+		$('.junfo-log').find('.vertical p:nth-child(n+21)').remove();
+	}
 }
 
 function defineMessage(pos, field) {

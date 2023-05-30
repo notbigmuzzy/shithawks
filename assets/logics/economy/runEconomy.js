@@ -9,84 +9,77 @@ export const runEconomy = () => {
 	}
 
 	tempListOfDrugs.forEach(function(drug) {
-
 		//DEFAULT SETUP		  --VALUES--
 		let dopeName = 			drug[0],
 			lastDopePrice = 	drug[1],
-			flowAmount = window.saveState.flow[dopeName],
-			bottomPrice = 		100,
-			topPrice = 			2000,
-			flowTendency = 		'stagnant';
-			
+			flowAmount = 		window.saveState.flow[dopeName],
+			bottomPrice = 		window.saveState.economy.bottomDrugPrice,
+			topPrice = 			window.saveState.economy.topDrugPrice,
+			flowTendency = 		window.saveState.economy.flowTendency,
+			globalEconomy = 	window.saveState.economy.globalEconomy;
+
 		switch (dopeName) {
 			case 'Acid':
-				bottomPrice = flowAmount * 10,
-				topPrice = bottomPrice * 3,
-				flowTendency = 'positive';
+				bottomPrice = flowAmount * 7;
+				topPrice = bottomPrice * 3.5;
 		    	break;
 		    case 'Cocaine':
-				bottomPrice = flowAmount * 5,
-				topPrice = bottomPrice * 5,
-				flowTendency = 'stagnant';
+				bottomPrice = flowAmount * 20;
+				topPrice = bottomPrice * 2;
 		    	break;
 			case 'Hashish':
-				bottomPrice = flowAmount * 7,
-				topPrice = bottomPrice * 5,
-				flowTendency = 'positive';
+				bottomPrice = flowAmount * 12;
+				topPrice = bottomPrice * 2;
 				break;
 			case 'Heroin':
-				bottomPrice = flowAmount * 8,
-				topPrice = bottomPrice * 5,
-				flowTendency = 'negative';
+				bottomPrice = flowAmount * 28;
+				topPrice = bottomPrice * 2;
 				break;
 			case 'MDA':
-				flowAmount = 20,
-				bottomPrice = flowAmount * 7,
-				topPrice = bottomPrice * 5,
-				flowTendency = 'negative';				
+				bottomPrice = flowAmount * 28;
+				topPrice = bottomPrice * 1.5;
 				break;
 			case 'Opium':
-				bottomPrice = flowAmount * 6,
-				topPrice = bottomPrice * 5,
-				flowTendency = 'positive';
+				bottomPrice = flowAmount * 16;
+				topPrice = bottomPrice * 2;
 				break;
 			case 'PCP':
-				bottomPrice = flowAmount * 3,
-				topPrice = bottomPrice * 3,
-				flowTendency = 'positive';
+				bottomPrice = flowAmount * 16;
+				topPrice = bottomPrice * 2;
 				break;
 			case 'Peyote':
-				bottomPrice = flowAmount * 10,
-				topPrice = bottomPrice * 5,
-				flowTendency = 'negative';
+				bottomPrice = flowAmount * 12;
+				topPrice = bottomPrice * 2.5;
 				break;
 			case 'Shrooms':
-				bottomPrice = flowAmount * 7,
-				topPrice = bottomPrice * 5,
-				flowTendency = 'positive';
+				bottomPrice = flowAmount * 6;
+				topPrice = bottomPrice * 2.5;
 				break;
 			case 'Speed':
-				bottomPrice = flowAmount * 9,
-				topPrice = bottomPrice * 5,
-				flowTendency = 'negative';
+				bottomPrice = flowAmount * 3;
+				topPrice = bottomPrice * 5;
 				break;
 			case 'Viagra':
-				bottomPrice = flowAmount * 10,
-				topPrice = bottomPrice * 5,
-				flowTendency = 'positive';
+				bottomPrice = flowAmount * 5;
+				topPrice = bottomPrice * 3;
 				break;
 			case 'Weed':
-				bottomPrice = flowAmount * 8,
-				topPrice = bottomPrice * 5,
-				flowTendency = 'stagnant';
+				bottomPrice = flowAmount * 12;
+				topPrice = bottomPrice * 2;
 				break;
 			default:
 		    	//console.log('Default');
 		}
 
-		console.log(topPrice)
-
-		let newDopePrice = priceFlow(dopeName,lastDopePrice,bottomPrice,topPrice,flowAmount,flowTendency);
+		let newDopePrice = priceFlow( 	
+			dopeName,
+			lastDopePrice,
+			bottomPrice,
+			topPrice,
+			flowAmount,
+			flowTendency,
+			globalEconomy
+		);
 		window.saveState.spice[dopeName] = newDopePrice;
 
 		//UPDATE DRUG STATS ON DETAILS PAGE

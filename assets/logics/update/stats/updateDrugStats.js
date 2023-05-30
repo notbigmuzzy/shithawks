@@ -7,4 +7,9 @@ export const updateDrugStats = (dopeName,dopePrice,topPrice) => {
 
 	dopePriceField.html(dopePrice);
 	dopeGraphField.append(dopeGraphPointHTML);
+
+	let noOfGraphPoints = $('.drug').find('.' + dope).find('d-graph dg-point').length
+	if (noOfGraphPoints >= 21) {
+		$('.drug').find('.' + dope).find('d-graph dg-point:nth-child(-n+1)').remove();
+	}
 }
