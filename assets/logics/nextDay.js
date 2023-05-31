@@ -5,9 +5,12 @@ import { updateMapPage } from './update/updateMapPage.js';
 import { updateDetailsPage } from './update/updateDetailsPage.js';
 import { updateBusinessPage } from './update/updateBusinessPage.js';
 import { markFieldsForMovement } from './movement/markFieldsForMovement.js'
-
+import { flagCooldown } from './flags/flagCooldown.js'
+import { debugFlags } from './debug/debugControl.js'
+ 
 export const nextDayUpdate = () => {
-	$('.next-day-button').removeClass('next');
+	//FLAGS
+	flagCooldown();
 	//ECONOMY
 	runEconomy();
 	//UPDATE STATE
@@ -22,4 +25,7 @@ export const nextDayUpdate = () => {
 	updateBusinessPage();
 	//MARK FIELDS FOR MOVEMENT
 	markFieldsForMovement();
+	//MISC
+	debugFlags();
+	$('.next-day-button').removeClass('next');
 }

@@ -1,12 +1,31 @@
 import { priceFlow } from './priceFlow.js'
 import { updateDrugStats } from "../update/stats/updateDrugStats.js"
+import { spiceMustFlow } from '../events/spiceMustFlow.js'
+import { recessionTimeBaby } from '../events/recessionTimeBaby.js'
+import { randNO } from '../math/randNO.js'
 
 export const runEconomy = () => {
+
+	//PREP LIST OF DRUGS
 	let listOfDrugsFromSaveState = window.saveState.spice;
 	let tempListOfDrugs = [];
 	for( let d in listOfDrugsFromSaveState ) {
 		tempListOfDrugs.push([d,listOfDrugsFromSaveState[d]]);
 	}
+
+	//CHANGE GLOBAL ECONOMY
+	let globalEconomy = window.saveState.economy.globalEconomy;
+	if (window.saveState.flags.flagGlobalEconomyCooldown == 0) {
+		let changeGlobalEconomy = randNO(1,30);
+		changeGlobalEconomy == 10 ? spiceMustFlow() : '';
+		changeGlobalEconomy == 20 ? recessionTimeBaby() : '';
+	}
+
+	if (window.saveState.flags.flagBullPeriod == 0 && window.saveState.flags.flagBearPeriod == 0) {
+		window.saveState.economy.globalEconomy = "stagnant";
+	}
+
+	console.log(window.saveState.economy.globalEconomy)
 
 	tempListOfDrugs.forEach(function(drug) {
 		//DEFAULT SETUP		  --VALUES--
@@ -15,9 +34,9 @@ export const runEconomy = () => {
 			flowAmount = 		window.saveState.flow[dopeName],
 			bottomPrice = 		window.saveState.economy.bottomDrugPrice,
 			topPrice = 			window.saveState.economy.topDrugPrice,
-			flowTendency = 		window.saveState.economy.flowTendency,
-			globalEconomy = 	window.saveState.economy.globalEconomy;
+			flowTendency = 		window.saveState.economy.flowTendency;
 
+		//SET INDIVIDUAL DOPE STATS
 		switch (dopeName) {
 			case 'Acid':
 				bottomPrice = flowAmount * 7;
@@ -71,6 +90,7 @@ export const runEconomy = () => {
 		    	//console.log('Default');
 		}
 
+		//CALL PRICE FLOW
 		let newDopePrice = priceFlow( 	
 			dopeName,
 			lastDopePrice,
@@ -80,6 +100,8 @@ export const runEconomy = () => {
 			flowTendency,
 			globalEconomy
 		);
+
+		//SET NEW PRICE
 		window.saveState.spice[dopeName] = newDopePrice;
 
 		//UPDATE DRUG STATS ON DETAILS PAGE

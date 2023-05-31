@@ -70,5 +70,10 @@
     "globalEconomy": "stagnant",
     "positiveGlobalEconomy": "bull",
     "negativeGlobalEconomy": "bear"
+  },
+  "flags": {
+    "flagBullPeriod": 0,
+    "flagBearPeriod": 0,
+    "flagGlobalEconomyCooldown": 0
   }
 }

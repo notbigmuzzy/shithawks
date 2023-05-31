@@ -91,13 +91,18 @@ modal-float {
 				padding-bottom: 10px;
 				font-family: monospace;
 
-				&.important {
+				&.important,
+				&.notification {
 					font-size: 12px;
 					background-color: var(--red);
 					color: $white;
 					border: none;
 					padding: 5px;
 					font-size: 12px;
+				}
+
+				&.notification {
+					background-color: var(--blue);
 				}
 
 				&:last-child {
@@ -185,11 +190,31 @@ modal-float {
 				height: 50px;
 				overflow: hidden;
 
+				&:hover {
+					dg-point {
+						opacity: 0.25;
+					}
+				}
+
 				dg-point {
+					position: relative;
 					display: flex;
 					align-items: flex-end;
 					width: 5%;
 					padding: 0 2px;
+
+					&:hover {
+						opacity: 1;
+						z-index: 1;
+
+						i {
+							background-color: $black;
+						}
+
+						label {
+							display: block;
+						}
+					}
 
 					i {
 						display: block;
@@ -198,6 +223,26 @@ modal-float {
 						width: 100%;
 						border: 1px dashed $white;
 						background-color: var(--lightgray);
+					}
+
+					label {
+						position: absolute;
+						top: 0;
+						left: 0;
+						display: none;
+						pointer-events: none;
+						background: $black;
+						padding: 0 4px;
+						font-size: 14px;
+					}
+
+					&:nth-child(n+10){
+						&:nth-last-child(-n+10) {
+							label {
+								left: auto;
+								right: 0;
+							}
+						}
 					}
 				}
 			}

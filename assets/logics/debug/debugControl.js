@@ -1,4 +1,6 @@
 export const debugControls = () => {
+
+	//GLOBAL ECONOMY CONTROL BUTTONS
 	$('.debug .global-p').click(function() {
 		window.saveState.economy.globalEconomy = window.saveState.economy.positiveGlobalEconomy;
 	});
@@ -17,4 +19,11 @@ export const debugControls = () => {
 	$('.debug .flow-n').click(function() {
 		window.saveState.economy.flowTendency = window.saveState.economy.negativeFlowTendency;
 	});
+}
+
+export const debugFlags = () => {
+	//FLAGS DISPLAY IN DEBUG
+	$('.debug .flag-bull i').html(window.saveState.flags.flagBullPeriod);
+	$('.debug .flag-bear i').html(window.saveState.flags.flagBearPeriod);
+	$('.debug .flag-cooldown i').html(window.saveState.flags.flagGlobalEconomyCooldown);
 }

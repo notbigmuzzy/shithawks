@@ -18,9 +18,6 @@ export const priceFlow = (
 	priceCorrection = flowControl(priceCorrection,flowAmount,flowTendency,globalEconomy);
 	newPrice = lastDopePrice += priceCorrection;
 
-	
-
-
 	//IF NEW DRUG PRICE BELLOW 0
 	newPrice = priceBottomedOut(dopeName,newPrice, bottomPrice);
 
