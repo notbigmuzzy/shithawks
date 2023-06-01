@@ -4,6 +4,9 @@ import { randNO } from '../math/randNO.js'
 import { spiceMustFlow } from '../events/spiceMustFlow.js'
 import { recessionTimeBaby } from '../events/recessionTimeBaby.js'
 import { heroinBust, heroinSlap } from '../events/heroinBustAndSlap.js'
+import { marakeshExpress } from '../events/marakeshExpress.js'
+import { pharmacyRaid } from '../events/pharmacyRaid.js'
+import { brownieFreakOut } from '../events/brownieFreakOut.js'
 
 export const runEconomy = () => {
 	//PREP LIST OF DRUGS
@@ -75,6 +78,11 @@ export const runEconomy = () => {
 					[specialEvent,lastDopePrice] = heroinSlap(specialEvent,lastDopePrice,topPrice);
 				}
 				break;
+			case 'Ludes':
+				bottomPrice = flowAmount * 12;
+				topPrice = bottomPrice * 2.5;
+				[specialEvent,lastDopePrice] = pharmacyRaid(specialEvent,lastDopePrice,topPrice);
+				break;
 			case 'MDA':
 				bottomPrice = flowAmount * 28;
 				topPrice = bottomPrice * 1.5;
@@ -87,11 +95,7 @@ export const runEconomy = () => {
 			case 'Opium':
 				bottomPrice = flowAmount * 16;
 				topPrice = bottomPrice * 2;
-				se = randNO(1,30);
-				if (se == 1) {
-					specialEvent = 1;
-					
-				}
+				[specialEvent,lastDopePrice] = marakeshExpress(specialEvent,lastDopePrice,topPrice);
 				break;
 			case 'PCP':
 				bottomPrice = flowAmount * 16;
@@ -141,11 +145,7 @@ export const runEconomy = () => {
 			case 'Weed':
 				bottomPrice = flowAmount * 12;
 				topPrice = bottomPrice * 2;
-				se = randNO(1,30);
-				if (se == 1) {
-					specialEvent = 1;
-					
-				}
+				[specialEvent,lastDopePrice] = brownieFreakOut(specialEvent,lastDopePrice,topPrice);
 				break;
 			default:
 		    	//console.log('Default');
