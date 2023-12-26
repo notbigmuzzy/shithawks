@@ -7,7 +7,7 @@ export const brownieFreakOut = (specialEvent,lastDopePrice,topPrice) => {
 
 	if (w == 1 && lastDopePrice < specialEventPrice) {
 		specialEvent = 1;
-		lastDopePric e = specialEventPrice;
+		lastDopePrice = specialEventPrice;
 
 		//MESSAGE IN LOG
 		let message = "Guy sells his grandma brownies! They are special.";
